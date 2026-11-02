@@ -1,18 +1,44 @@
-/* Переменные проекта */
+
+/*
+  AEGIS COSPLAY — базовые стили сайта.
+
+  Основа проекта: HTML/CSS из КР №1.
+
+  Практика №12:
+  Адаптивность, Mobile First и медиазапросы
+  реализованы в отдельном css/responsive.css.
+
+  Практика №13:
+  Видимый фокус, состояния полей и доступность.
+  Дополнительные правила находятся в responsive.css.
+
+  Практика №14:
+  Финальная проверка оформления перед сдачей КР №3.
+
+  Стили и порядок применения правил сохранены.
+*/
+
+/* =========================================
+   1. ПЕРЕМЕННЫЕ ПРОЕКТА
+   ========================================= */
+
 :root {
-    /* Основные цвета */
+    /* Основные цвета сайта */
     --color-bg: #211e25;
     --color-text: #f5eff7;
     --color-muted: #c3b0cd;
 
+    /* Акцентные цвета */
     --color-primary: #c1a5df;
     --color-primary-dark: #ac8ccd;
 
     --color-border: #55495a;
 
+    /* Фон обычных блоков */
     --color-surface: #302a34;
     --color-surface-accent: #352d39;
 
+    /* Цвета для ошибок и успешных действий */
     --color-danger: #ff6b81;
     --color-success: #67d391;
     --color-success-bg: rgba(40, 120, 70, 0.18);
@@ -22,19 +48,20 @@
     --color-gold: #c1a5df;
     --color-gold-light: #c1a5df;
 
-    /* Отступы */
+    /* Отступы между элементами */
     --space-xs: 4px;
     --space-sm: 8px;
     --space-md: 16px;
     --space-lg: 24px;
     --space-xl: 32px;
 
-    /* Скругления */
+    /* Скругления блоков */
     --radius-sm: 6px;
     --radius-md: 10px;
     --radius-lg: 16px;
 
-    /* Максимальная ширина контента */
+    /* Исходная ширина контейнера.
+       Для адаптивного дизайна она переопределяется. */
     --container-width: 806px;
 
     /* Цвета полупрозрачных блоков */
@@ -45,12 +72,16 @@
     --glass-blur: 0px;
 }
 
+/* =========================================
+   2. БАЗОВЫЕ СТИЛИ
+   ========================================= */
 
-/* Базовые стили */
+/* Предсказуемый расчёт ширины и высоты элементов. */
 * {
     box-sizing: border-box;
 }
 
+/* Плавный переход к разделам по якорным ссылкам. */
 html {
     scroll-behavior: smooth;
 }
@@ -63,23 +94,26 @@ body {
     line-height: 1.5;
 
     color: var(--color-text);
-
     background: var(--color-bg);
 }
 
+/* Исходные отступы основного содержимого.
+   Адаптивные значения задаются в responsive.css. */
 main {
     padding: 140px var(--space-lg) var(--space-lg);
 }
 
-
-/* Выделение элемента при переходе по якорной ссылке */
+/* Подсветка целевого раздела при переходе по якорю. */
 :target {
     outline: 2px dashed var(--color-primary);
     outline-offset: 4px;
 }
 
+/* =========================================
+   3. ССЫЛКИ И КЛАВИАТУРНЫЙ ФОКУС
+   Практика №13 — доступность
+   ========================================= */
 
-/* Обычные ссылки */
 a {
     color: var(--color-primary);
 }
@@ -88,13 +122,19 @@ a:hover {
     color: var(--color-primary-dark);
 }
 
+/* Видимая рамка для навигации клавишей Tab. */
 a:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 3px;
 }
 
+/* =========================================
+   4. ШАПКА САЙТА
+   ========================================= */
 
-/* Шапка сайта */
+/* Исходная шапка.
+   Поведение на мобильных устройствах
+   переопределено в responsive.css. */
 .site-header {
     position: fixed;
     top: 0;
@@ -109,7 +149,7 @@ a:focus-visible {
     backdrop-filter: blur(14px);
 }
 
-
+/* Отступ для якорных разделов под шапкой. */
 #advantages,
 #popular {
     scroll-margin-top: 140px;
@@ -121,6 +161,7 @@ a:focus-visible {
     padding: var(--space-lg);
 }
 
+/* Название магазина в шапке. */
 .site-header__logo {
     font-size: 22px;
     font-weight: 700;
@@ -130,8 +171,14 @@ a:focus-visible {
     text-decoration: none;
 }
 
+/* =========================================
+   5. НАВИГАЦИЯ
+   Практика №12 — Flexbox
+   ========================================= */
 
-/* Основная навигация */
+/* Flexbox располагает пункты меню.
+   Направление элементов на разных ширинах
+   изменяется через медиазапросы. */
 .site-nav__list {
     display: flex;
     flex-wrap: wrap;
@@ -150,6 +197,7 @@ a:focus-visible {
     margin: 0;
 }
 
+/* Оформление ссылок навигации. */
 .site-nav__link {
     display: inline-block;
 
@@ -166,18 +214,26 @@ a:focus-visible {
     background-color: var(--color-primary);
 }
 
+/* Практика №13: фокус при навигации с клавиатуры. */
 .site-nav__link:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 3px;
 }
 
+/* Подсветка текущей страницы. */
 .site-nav__link--active {
     color: var(--color-white);
     background-color: var(--color-primary);
 }
 
+/* =========================================
+   6. ГЛАВНЫЙ ЭКРАН — HERO
+   Практика №12 — адаптивная вёрстка
+   ========================================= */
 
-/* Главный экран */
+/* Flexbox объединяет текст и фотографию.
+   На мобильном экране блок перестраивается
+   через css/responsive.css. */
 .hero {
     display: flex;
     align-items: center;
@@ -215,24 +271,30 @@ a:focus-visible {
     display: inline-flex;
 }
 
+/* Контейнер изображения главного экрана. */
 .hero__image-wrapper {
     flex: 0 0 700px;
     max-width: 700px;
     width: 100%;
 }
 
+/* object-fit заполняет область без искажения. */
 .hero__image {
     display: block;
     width: 100%;
     height: 100%;
     max-height: 420px;
+
     object-fit: cover;
+
     border-radius: var(--radius-md);
     border: 1px solid var(--color-glass-border);
 }
 
+/* =========================================
+   7. ОБЩИЕ СЕКЦИИ
+   ========================================= */
 
-/* Общие секции */
 .section {
     max-width: var(--container-width);
     margin: 0 auto var(--space-xl);
@@ -242,14 +304,18 @@ a:focus-visible {
     margin-top: 0;
 }
 
+/* =========================================
+   8. КАРТОЧКИ ТОВАРОВ
+   Практика №12 — адаптивные карточки
+   ========================================= */
 
-/* Карточка товара */
+/* Flexbox располагает содержимое вертикально.
+   Кнопка заказа остаётся внизу карточки. */
 .product-card {
     position: relative;
 
     display: flex;
     flex-direction: column;
-
     gap: var(--space-sm);
 
     padding: var(--space-md);
@@ -270,16 +336,14 @@ a:focus-visible {
             background-color 0.2s ease;
 }
 
+/* Поднятие карточки при наведении мыши. */
 .product-card:hover {
     transform: translateY(-4px);
-
     border-color: var(--color-primary);
-
     background: rgba(50, 38, 72, 0.68);
 }
 
-
-/* Выделенная карточка Афины */
+/* Дополнительное выделение популярного товара. */
 .product-card--featured {
     border-color: var(--color-primary);
     background: rgba(55, 39, 82, 0.62);
@@ -305,8 +369,11 @@ a:focus-visible {
     align-self: flex-start;
 }
 
+/* =========================================
+   9. ИЗОБРАЖЕНИЯ ТОВАРОВ
+   ========================================= */
 
-/* Изображения карточек */
+/* Контейнер скрывает лишнюю часть изображения. */
 .product-card__image-link {
     display: block;
     overflow: hidden;
@@ -324,12 +391,11 @@ a:focus-visible {
     height: 260px;
 
     object-fit: cover;
-
     border-radius: 12px 12px 0 0;
 }
 
-
-/* Для вертикальной фотографии Лунной волшебницы */
+/* Для вертикального фото используется contain,
+   чтобы костюм полностью помещался в карточку. */
 .product-card__image--moon {
     object-fit: contain;
     object-position: center;
@@ -337,8 +403,7 @@ a:focus-visible {
     background: rgba(28, 22, 43, 0.95);
 }
 
-
-/* Заглушка вместо фотографии */
+/* Заглушка показывается, если фотография отсутствует. */
 .product-card__image-placeholder {
     display: flex;
     align-items: center;
@@ -358,24 +423,19 @@ a:focus-visible {
             0;
 
     color: var(--color-muted);
-
     background: rgba(255, 255, 255, 0.05);
 }
 
-
-/* Значок ХИТ */
+/* Значок ХИТ поверх изображения товара. */
 .product-card__badge {
     position: absolute;
-
     top: 12px;
     right: 12px;
-
     z-index: 2;
 
     padding: 6px 10px;
 
     background: rgba(155, 108, 255, 0.92);
-
     border: 1px solid rgba(240, 217, 148, 0.7);
     border-radius: 20px;
 
@@ -386,18 +446,24 @@ a:focus-visible {
     letter-spacing: 0.05em;
 }
 
+/* =========================================
+   10. СЕТКА ТОВАРОВ
+   Практика №12 — CSS Grid
+   ========================================= */
 
-/* Сетка товаров */
+/* Базовая сетка.
+   Число колонок изменяется в responsive.css. */
 .products-grid {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: var(--space-lg);
 }
 
+/* =========================================
+   11. КНОПКИ
+   ========================================= */
 
-/* Кнопки */
+/* Общий класс для ссылок-кнопок и button. */
 .button {
     display: inline-block;
 
@@ -408,10 +474,10 @@ a:focus-visible {
 
     font: inherit;
     text-decoration: none;
-
     cursor: pointer;
 }
 
+/* Основная кнопка действия. */
 .button--primary {
     color: var(--color-white);
     background-color: var(--color-primary);
@@ -422,11 +488,10 @@ a:focus-visible {
     background-color: var(--color-primary-dark);
 }
 
+/* Второстепенная кнопка. */
 .button--secondary {
     color: var(--color-primary);
-
     background-color: transparent;
-
     border: 1px solid var(--color-primary);
 }
 
@@ -435,19 +500,23 @@ a:focus-visible {
     background-color: var(--color-primary);
 }
 
+/* Практика №13: видимая рамка фокуса. */
 .button:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 3px;
 }
 
+/* Недоступные кнопки визуально отличаются. */
 .button:disabled,
 .button--disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
+/* =========================================
+   12. ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ
+   ========================================= */
 
-/* Дополнительный информационный блок */
 .aside-info {
     max-width: var(--container-width);
 
@@ -466,15 +535,20 @@ a:focus-visible {
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
 }
 
+/* =========================================
+   13. МОДАЛЬНОЕ ОКНО ЗАКАЗА
+   Практика №13 — доступность
+   ========================================= */
 
-/* Модальное окно заказа */
+/* Стили HTML-элемента dialog.
+   Открытие, закрытие и обработка формы
+   выполняются в js/main.js. */
 .order-dialog {
     width: min(100% - 32px, 560px);
 
     padding: var(--space-lg);
 
     color: var(--color-text);
-
     background: rgba(24, 18, 36, 0.88);
 
     border: 1px solid var(--color-glass-border);
@@ -486,8 +560,7 @@ a:focus-visible {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
 }
 
-
-/* Затемнение страницы под модальным окном */
+/* Затемнение страницы за модальным окном. */
 .order-dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -496,12 +569,18 @@ a:focus-visible {
     margin-top: 0;
 }
 
+/* =========================================
+   14. ПОЛЯ ФОРМ
+   Практики №12 и №13
+   ========================================= */
 
-/* Поля формы */
+/* Отступ между полями формы. */
 .order-form__field {
     margin-bottom: var(--space-md);
 }
 
+/* Подпись поля.
+   В HTML связана с input через for и id. */
 .order-form__label {
     display: block;
     margin-bottom: var(--space-xs);
@@ -520,28 +599,26 @@ a:focus-visible {
     font: inherit;
 }
 
+/* Чекбокс не должен растягиваться на всю ширину. */
 .order-form__input--checkbox {
     width: auto;
 }
 
+/* Подсказка под полем формы. */
 .order-form__hint {
     display: block;
-
     margin-top: var(--space-xs);
-
     color: var(--color-muted);
 }
 
-
-/* Состояние поля при наведении */
+/* Цвет границы поля при наведении. */
 .order-form__input:hover,
 .order-form__select:hover,
 .order-form__textarea:hover {
     border-color: var(--color-primary);
 }
 
-
-/* Состояние поля при работе с клавиатуры */
+/* Практика №13: фокус при управлении клавиатурой. */
 .order-form__input:focus-visible,
 .order-form__select:focus-visible,
 .order-form__textarea:focus-visible {
@@ -549,29 +626,27 @@ a:focus-visible {
     outline-offset: 3px;
 }
 
+/* Расположение чекбокса рядом с текстом. */
 .order-form__label--checkbox {
     display: flex;
     align-items: center;
-
     gap: var(--space-sm);
 }
 
+/* Кнопки формы размещаются через Flexbox. */
 .order-form__actions {
     display: flex;
-
     gap: var(--space-md);
-
     margin-top: var(--space-lg);
 }
 
-
-/* Поля с ошибкой */
+/* Практика №13: выделение поля с ошибкой.
+   aria-invalid устанавливается при наличии ошибки. */
 [aria-invalid="true"] {
     border-color: var(--color-danger);
 }
 
-
-/* Сообщение после успешного заказа */
+/* Сообщение после успешной отправки заказа. */
 .success-message {
     max-width: var(--container-width);
 
@@ -579,19 +654,19 @@ a:focus-visible {
     padding: var(--space-md);
 
     border-left: 4px solid var(--color-success);
-
     background-color: var(--color-success-bg);
 }
 
+/* =========================================
+   15. ХЛЕБНЫЕ КРОШКИ
+   ========================================= */
 
-/* Хлебные крошки */
+/* Показывают положение пользователя на сайте. */
 .breadcrumbs {
     max-width: var(--container-width);
-
     margin: 0 auto var(--space-md);
 
     font-size: 14px;
-
     color: var(--color-muted);
 }
 
@@ -599,16 +674,21 @@ a:focus-visible {
     color: var(--color-primary);
 }
 
+/* Разделитель между ссылкой и текущей страницей. */
 .breadcrumbs__current::before {
     content: " / ";
     color: var(--color-muted);
 }
 
+/* =========================================
+   16. КАТАЛОГ ТОВАРОВ
+   Практика №12 — адаптивные фильтры
+   ========================================= */
 
-/* Основная область каталога */
+/* Grid разделяет фильтры и список товаров.
+   На мобильном экране колонки перестраиваются. */
 .catalog-layout {
     max-width: var(--container-width);
-
     margin: 0 auto var(--space-xl);
 
     display: grid;
@@ -619,11 +699,9 @@ a:focus-visible {
     gap: var(--space-lg);
 }
 
-
-/* Панель фильтров */
+/* Боковая панель с фильтрами. */
 .catalog-filters {
     grid-area: filters;
-
     padding: var(--space-md);
 
     border: 1px solid var(--color-border);
@@ -632,22 +710,20 @@ a:focus-visible {
     background-color: var(--color-surface);
 }
 
-
-/* Область с товарами */
+/* Основная область с карточками товаров. */
 .catalog-layout__products {
     grid-area: products;
 }
 
-
-/* Форма фильтров */
+/* Фильтры сгруппированы через Grid. */
 .catalog-filters__form {
     display: grid;
     gap: var(--space-md);
 }
 
+/* Группа переключателей фильтра. */
 .catalog-filters__group {
     margin: 0;
-
     padding: var(--space-md);
 
     border: 1px solid var(--color-border);
@@ -674,17 +750,24 @@ a:focus-visible {
     font: inherit;
 }
 
+/* Наведение на поле фильтра. */
 .catalog-filters__input:hover {
     border-color: var(--color-primary);
 }
 
+/* Практика №13: фокус при работе с фильтрами. */
 .catalog-filters__input:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 3px;
 }
 
+/* =========================================
+   17. СТРАНИЦА ТОВАРА
+   Практика №12 — адаптивная карточка
+   ========================================= */
 
-/* Страница товара */
+/* Grid разделяет изображение и информацию.
+   На телефоне блок становится одноколоночным. */
 .product {
     max-width: var(--container-width);
 
@@ -694,11 +777,10 @@ a:focus-visible {
     display: grid;
 
     grid-template-columns:
-            minmax(280px, 0.8fr)
-            1.2fr;
+        minmax(280px, 0.8fr)
+        1.2fr;
 
     gap: var(--space-xl);
-
     align-items: center;
 
     background-color: rgba(38, 27, 59, 0.72);
@@ -709,18 +791,14 @@ a:focus-visible {
     backdrop-filter: blur(12px);
 }
 
-
-/* Контейнер фотографии товара */
+/* Контейнер фотографии товара. */
 .product__image-wrapper {
     min-height: 420px;
-
     overflow: hidden;
-
     border-radius: var(--radius-lg);
 }
 
-
-/* Фотография товара */
+/* object-fit заполняет блок фотографией. */
 .product__image {
     display: block;
 
@@ -733,8 +811,7 @@ a:focus-visible {
     border-radius: var(--radius-lg);
 }
 
-
-/* Заглушка изображения товара */
+/* Заглушка на случай отсутствия фотографии. */
 .product__image-placeholder {
     min-height: 420px;
 
@@ -753,8 +830,7 @@ a:focus-visible {
     border-radius: var(--radius-lg);
 }
 
-
-/* Текстовая часть товара */
+/* Информация о товаре располагается вертикально. */
 .product__content {
     display: flex;
     flex-direction: column;
@@ -775,13 +851,11 @@ a:focus-visible {
 
 .product__title {
     margin: 0 0 var(--space-md);
-
     font-size: 36px;
 }
 
 .product__description {
     margin: 0 0 var(--space-md);
-
     color: var(--color-muted);
 }
 
@@ -794,6 +868,7 @@ a:focus-visible {
     font-weight: 700;
 }
 
+/* Дополнительный блок характеристик. */
 .product__details {
     width: 100%;
 
@@ -806,37 +881,35 @@ a:focus-visible {
     border-radius: var(--radius-md);
 }
 
+/* =========================================
+   18. ТАБЛИЦА ХАРАКТЕРИСТИК
+   Практика №12 — адаптивные таблицы
+   ========================================= */
 
-/* Таблица характеристик товара */
+/* Горизонтальная прокрутка таблицы находится
+   в .table-wrapper из responsive.css. */
 .product-table {
     width: 100%;
-
     border-collapse: collapse;
-
     margin-top: var(--space-md);
 
     background: rgba(43, 30, 67, 0.55);
-
     border-radius: var(--radius-md);
 
     overflow: hidden;
 }
 
-
-/* Название таблицы */
+/* Подпись таблицы. */
 .product-table__caption {
     padding: 14px;
-
     text-align: left;
 
     font-size: 18px;
     font-weight: 700;
-
     color: var(--color-text);
 }
 
-
-/* Ячейки таблицы */
+/* Заголовки и обычные ячейки таблицы. */
 .product-table th,
 .product-table td {
     padding: 12px 14px;
@@ -847,13 +920,11 @@ a:focus-visible {
     vertical-align: top;
 }
 
-
-/* Заголовок таблицы */
+/* Фон ячеек-заголовков. */
 .product-table th {
     background: rgba(117, 76, 180, 0.28);
 
     color: var(--color-text);
-
     font-weight: 700;
 }
 
@@ -861,36 +932,32 @@ a:focus-visible {
     color: var(--color-muted);
 }
 
-
-/* Строка таблицы при наведении */
+/* Подсветка строки таблицы при наведении. */
 .product-table tbody tr:hover {
     background: rgba(155, 108, 255, 0.08);
 }
 
+/* =========================================
+   19. СТРАНИЦА ОФОРМЛЕНИЯ ЗАКАЗА
+   Практика №12 — адаптивные формы
+   ========================================= */
 
-/* Страница оформления заказа */
 .order-page {
     max-width: var(--container-width);
-
     margin: 0 auto var(--space-xl);
 }
 
-
-/* Две колонки страницы заказа */
+/* Grid разделяет описание товара и форму заказа. */
 .order-page__layout {
     display: grid;
-
     grid-template-columns: 360px 1fr;
-
     gap: var(--space-xl);
-
     align-items: start;
 
     margin-top: var(--space-lg);
 }
 
-
-/* Карточка выбранного товара */
+/* Карточка выбранного товара. */
 .order-summary {
     padding: var(--space-md);
 
@@ -906,8 +973,7 @@ a:focus-visible {
     margin-top: 0;
 }
 
-
-/* Фото товара на странице заказа */
+/* Фотография выбранного товара. */
 .order-summary__image {
     display: block;
 
@@ -915,7 +981,6 @@ a:focus-visible {
     height: 360px;
 
     object-fit: cover;
-
     border-radius: var(--radius-md);
 }
 
@@ -936,11 +1001,9 @@ a:focus-visible {
     font-weight: 700;
 }
 
-
-/* Форма на отдельной странице заказа */
+/* Отдельный блок формы заказа. */
 .order-page__form {
     max-width: 700px;
-
     padding: var(--space-lg);
 
     background: rgba(43, 30, 67, 0.72);
@@ -951,24 +1014,25 @@ a:focus-visible {
     backdrop-filter: blur(12px);
 }
 
-
-/* Белый фон полей на странице заказа */
+/* Контрастные поля для удобного ввода данных. */
 .order-page__form .order-form__input,
 .order-page__form .order-form__select,
 .order-page__form .order-form__textarea {
     color: #222222;
-
     background-color: rgba(255, 255, 255, 0.96);
 }
 
 .order-page__form .order-form__textarea {
     resize: vertical;
-
     min-height: 120px;
 }
 
+/* =========================================
+   20. ПОДВАЛ САЙТА
+   ========================================= */
 
-/* Подвал сайта */
+/* Исходное положение подвала.
+   Ниже находится финальное правило на Flexbox. */
 .site-footer {
     position: fixed;
     bottom: 0;
@@ -989,17 +1053,23 @@ a:focus-visible {
     margin-bottom: 0;
 }
 
+/* =========================================
+   21. ПЕРВОНАЧАЛЬНОЕ ОФОРМЛЕНИЕ ПО ОБРАЗЦУ
+   ========================================= */
 
+/* Стили первого варианта AEGIS COSPLAY.
+   Финальный дизайн переопределяется в responsive.css. */
 
-/* Оформление по предоставленному образцу: AEGIS COSPLAY */
 .site-header {
     position: sticky;
     background: var(--color-bg);
     backdrop-filter: none;
 }
+
 .site-header__inner {
     padding: 8px 18px 18px;
 }
+
 .site-header__logo {
     display: block;
     font-size: 17px;
@@ -1007,35 +1077,196 @@ a:focus-visible {
     letter-spacing: 0.7px;
     color: var(--color-primary);
 }
-.site-nav__list { gap: 6px; margin: 3px 0 0; }
-.site-nav__link { padding: 9px 9px; font-size: 12px; font-weight: 700; }
-.site-nav__link--active { background: var(--color-primary); color: #292331; }
-.site-nav__link:hover { background: var(--color-primary-dark); color: #292331; }
-main { padding: 18px 16px 36px; }
+
+.site-nav__list {
+    gap: 6px;
+    margin: 3px 0 0;
+}
+
+.site-nav__link {
+    padding: 9px 9px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.site-nav__link--active {
+    background: var(--color-primary);
+    color: #292331;
+}
+
+.site-nav__link:hover {
+    background: var(--color-primary-dark);
+    color: #292331;
+}
+
+main {
+    padding: 18px 16px 36px;
+}
+
 .hero {
     box-shadow: none;
     background: var(--color-glass-light);
 }
-.hero__title { font-size: 40px; line-height: 1.12; font-weight: 800; }
-.hero__text { font-size: 13px; line-height: 1.75; color: var(--color-muted); }
-.hero__image { border: 0; border-radius: 12px; }
-.section__title { color: var(--color-primary); font-size: 21px; }
-.section { margin-bottom: 40px; }
-.advantages-list { font-size: 12px; line-height: 1.8; color: var(--color-muted); padding-left: 16px; }
-.advantages-list li { padding-bottom: 5px; }
-.button { font-size: 12px; font-weight: 700; padding: 8px 14px; }
-.button--primary { color: #292331; background: var(--color-primary); }
-.button--primary:hover { color: #292331; background: var(--color-primary-dark); }
-.button--secondary { color: var(--color-primary); }
-.product-card, .aside-info, .catalog-filters, .order-summary, .order-page__form {
+
+.hero__title {
+    font-size: 40px;
+    line-height: 1.12;
+    font-weight: 800;
+}
+
+.hero__text {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--color-muted);
+}
+
+.hero__image {
+    border: 0;
+    border-radius: 12px;
+}
+
+.section__title {
+    color: var(--color-primary);
+    font-size: 21px;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.advantages-list {
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--color-muted);
+    padding-left: 16px;
+}
+
+.advantages-list li {
+    padding-bottom: 5px;
+}
+
+.button {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 14px;
+}
+
+.button--primary {
+    color: #292331;
+    background: var(--color-primary);
+}
+
+.button--primary:hover {
+    color: #292331;
+    background: var(--color-primary-dark);
+}
+
+.button--secondary {
+    color: var(--color-primary);
+}
+
+.product-card,
+.aside-info,
+.catalog-filters,
+.order-summary,
+.order-page__form {
     background: var(--color-surface);
     box-shadow: none;
 }
-.product-card--featured { background: #393040; }
-.product-card:hover { background: #393040; }
-.product-card__badge { background: var(--color-primary); color: #292331; border: 0; }
-.product__price, .order-summary__price { color: var(--color-primary) !important; }
-.product, .product__details, .product-table { background: var(--color-surface); }
-.order-dialog { background: var(--color-surface); }
-.site-footer { position: static; border-top: 1px solid var(--color-border); background: var(--color-bg); }
-#advantages, #popular { scroll-margin-top: 96px; }
+
+.product-card--featured {
+    background: #393040;
+}
+
+.product-card:hover {
+    background: #393040;
+}
+
+.product-card__badge {
+    background: var(--color-primary);
+    color: #292331;
+    border: 0;
+}
+
+.product__price,
+.order-summary__price {
+    color: var(--color-primary) !important;
+}
+
+.product,
+.product__details,
+.product-table {
+    background: var(--color-surface);
+}
+
+.order-dialog {
+    background: var(--color-surface);
+}
+
+.site-footer {
+    position: static;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+}
+
+#advantages,
+#popular {
+    scroll-margin-top: 96px;
+}
+
+/* =========================================
+   22. ИСПРАВЛЕНИЕ ПОДВАЛА
+   Практика №14 — финальная компоновка
+   ========================================= */
+
+/* Flexbox прижимает подвал к низу короткой
+   страницы, не перекрывая содержимое. */
+html {
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+/* Основной блок занимает свободное пространство. */
+main {
+    flex: 1 0 auto;
+}
+
+/* Подвал расположен после основного содержимого. */
+.site-footer {
+    position: static;
+    flex-shrink: 0;
+    width: 100%;
+    margin-top: auto;
+
+    padding: 28px 24px;
+
+    border-top: 1px solid rgba(211, 183, 237, 0.22);
+    background: rgba(24, 20, 31, 0.92);
+
+    color: #d9c9e5;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.site-footer__text {
+    margin: 0 0 6px;
+}
+
+.site-footer__text:last-child {
+    margin-bottom: 0;
+}
+
+/* На телефонах уменьшаем отступы подвала. */
+@media (max-width: 639px) {
+    .site-footer {
+        padding: 22px 18px;
+        font-size: 13px;
+        text-align: center;
+    }
+}

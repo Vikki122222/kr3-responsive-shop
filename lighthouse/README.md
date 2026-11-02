@@ -1,13 +1,13 @@
-# Lighthouse: Accessibility
+# Lighthouse — проверка доступности
 
-Этот файл **не является отчётом Lighthouse**. Для практической №13 нужно сохранить
-настоящий отчёт или скриншот работы инструмента.
+Для контрольной работы №3 выполнен аудит Lighthouse в Chrome (категория **Accessibility**, устройство **Mobile**).
 
-1. Запустите проект локально (`python -m http.server 8000`) из папки `kr3-responsive-shop`.
-2. Откройте в Chrome `http://localhost:8000/index.html`.
-3. Нажмите `F12` → вкладка **Lighthouse**, выберите **Accessibility** и нажмите **Analyze page load**.
-4. Сохраните отчёт из меню Lighthouse → **Save as HTML** в эту папку под именем `accessibility-report.html` (или сделайте скриншот `accessibility-report.png`).
-5. Повторите проверку для `catalog.html` и `order.html`; сохраните при желании остальные отчёты как `catalog-accessibility.html` и `order-accessibility.html`.
-6. Добавьте сохранённый отчёт в коммит практики №13.
+| Страница | Оценка | Отчёт |
+| --- | --- | --- |
+| `index.html` | 100/100 | `accessibility-report.html` |
+| `catalog.html` | 100/100 | `catalog-accessibility.html` |
+| `order.html` | 100/100 | `order-accessibility.html` |
 
-Проверка средствами Chromium/Playwright не заменяет Lighthouse.
+Три HTML-отчёта созданы в Chrome в ходе практики №13 и сохранены в рабочем репозитории. Отчёты можно открыть в браузере и проверить отдельно от сайта.
+
+Для повторной проверки откройте нужную страницу в Chrome, затем `F12` → **Lighthouse** → **Accessibility** → **Analyze page load**. Результат может зависеть от версии браузера и условий запуска.

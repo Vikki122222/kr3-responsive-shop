@@ -1,6 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+    <!-- Практика №12: настройки адаптивной страницы.
+         Viewport нужен для корректного отображения
+         сайта на телефонах и планшетах. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,15 +16,21 @@
 
     <title>Контакты — AEGIS COSPLAY</title>
 
+    <!-- Основные стили и адаптивная вёрстка.
+         responsive.css подключён последним,
+         чтобы переопределять базовые правила. -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 
+    <!-- Данные для предпросмотра ссылки на страницу. -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="AEGIS COSPLAY">
+
     <meta
             property="og:description"
             content="Косплей-костюмы и аксессуары для фестивалей, фотосессий и ярких образов."
     >
+
     <meta
             property="og:image"
             content="images/dark-huntress.jpg"
@@ -28,16 +39,31 @@
 
 <body>
 
-<a class="skip-link" href="#main">Перейти к основному содержимому</a>
+<!-- Практика №13: ссылка позволяет пропустить меню
+     и перейти к основному содержимому с клавиатуры. -->
+<a class="skip-link" href="#main">
+    Перейти к основному содержимому
+</a>
+
+
+<!-- =========================================
+     ШАПКА САЙТА
+     Практика №12: адаптивная навигация
+     Практика №13: семантика и ARIA
+     ========================================= -->
 
 <header class="site-header">
+
     <div class="site-header__inner">
 
+        <!-- Логотип ведёт на главную страницу. -->
         <a class="site-header__logo" href="index.html">
             AEGIS COSPLAY
         </a>
 
+        <!-- nav обозначает основное меню сайта. -->
         <nav class="site-nav" aria-label="Основная навигация">
+
             <ul class="site-nav__list">
 
                 <li class="site-nav__item">
@@ -59,6 +85,9 @@
                 </li>
 
                 <li class="site-nav__item">
+
+                    <!-- aria-current указывает текущую страницу.
+                         Активная ссылка выделяется через CSS. -->
                     <a
                             class="site-nav__link site-nav__link--active"
                             href="contacts.html"
@@ -66,18 +95,27 @@
                     >
                         Контакты
                     </a>
+
                 </li>
 
             </ul>
+
         </nav>
 
     </div>
+
 </header>
 
 
+<!-- =========================================
+     ОСНОВНОЕ СОДЕРЖИМОЕ
+     ========================================= -->
+
+<!-- Практика №13: id="main" связан со skip-link.
+     tabindex="-1" позволяет перенести сюда фокус. -->
 <main id="main" tabindex="-1">
 
-    <!-- Хлебные крошки -->
+    <!-- Хлебные крошки показывают путь до страницы. -->
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
 
         <a
@@ -94,7 +132,12 @@
     </nav>
 
 
-    <!-- Контактная информация -->
+    <!-- =========================================
+         КОНТАКТНАЯ ИНФОРМАЦИЯ
+         ========================================= -->
+
+    <!-- Практика №13: на странице используется один h1.
+         Контактная информация оформлена списком. -->
     <section class="section">
 
         <h1 class="section__title">
@@ -123,7 +166,10 @@
     </section>
 
 
-    <!-- Информация о магазине -->
+    <!-- =========================================
+         ИНФОРМАЦИЯ О МАГАЗИНЕ
+         ========================================= -->
+
     <section class="section">
 
         <h2 class="section__title">
@@ -140,7 +186,12 @@
     </section>
 
 
-    <!-- Обратная связь -->
+    <!-- =========================================
+         ПЕРЕХОД К КАТАЛОГУ
+         ========================================= -->
+
+    <!-- Ссылки используются для перехода на другие
+         страницы, а не для отправки формы. -->
     <section class="section" id="feedback">
 
         <h2 class="section__title">
@@ -169,10 +220,224 @@
 
     </section>
 
+
+    <!-- =========================================
+         ФОРМА ОБРАТНОЙ СВЯЗИ
+         КР №3: обязательный элемент contacts.html
+
+         Практика №12:
+         Форма адаптируется через CSS Grid.
+         На телефонах поля идут в одну колонку.
+
+         Практика №13:
+         У полей есть label, обязательные атрибуты
+         и сообщения для пользователей.
+         ========================================= -->
+
+    <section class="section" id="contact-form">
+
+        <h2 class="section__title">
+            Напишите нам
+        </h2>
+
+        <p>
+            Остались вопросы о размерах, комплектации
+            или выборе костюма? Заполните форму ниже.
+        </p>
+
+        <!-- Используем существующие CSS-классы формы,
+             чтобы сохранить полупрозрачный дизайн.
+
+             Учебная форма не отправляет данные на сервер.
+             Обработчик ниже предотвращает переход страницы. -->
+        <form
+                class="order-form order-page__form"
+                id="feedback-form"
+                action="#"
+                method="post"
+        >
+
+            <!-- Имя отправителя. -->
+            <div class="order-form__field">
+
+                <label
+                        class="order-form__label"
+                        for="feedback-name"
+                >
+                    Ваше имя
+                </label>
+
+                <input
+                        class="order-form__input"
+                        id="feedback-name"
+                        name="name"
+                        type="text"
+                        placeholder="Введите ваше имя"
+                        minlength="2"
+                        autocomplete="name"
+                        required
+                >
+
+            </div>
+
+
+            <!-- Электронная почта для ответа. -->
+            <div class="order-form__field">
+
+                <label
+                        class="order-form__label"
+                        for="feedback-email"
+                >
+                    E-mail
+                </label>
+
+                <!-- type="email" проверяет формат адреса.
+                     required делает поле обязательным. -->
+                <input
+                        class="order-form__input"
+                        id="feedback-email"
+                        name="email"
+                        type="email"
+                        placeholder="example@mail.ru"
+                        autocomplete="email"
+                        required
+                >
+
+            </div>
+
+
+            <!-- Тема обращения.
+                 На широком экране занимает обе колонки. -->
+            <div class="order-form__field order-form__field--wide">
+
+                <label
+                        class="order-form__label"
+                        for="feedback-topic"
+                >
+                    Тема обращения
+                </label>
+
+                <select
+                        class="order-form__select"
+                        id="feedback-topic"
+                        name="topic"
+                        required
+                >
+
+                    <option value="">
+                        Выберите тему
+                    </option>
+
+                    <option value="costume">
+                        Помощь с выбором костюма
+                    </option>
+
+                    <option value="size">
+                        Вопрос по размерам
+                    </option>
+
+                    <option value="order">
+                        Оформление заказа
+                    </option>
+
+                    <option value="other">
+                        Другой вопрос
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Сообщение посетителя. -->
+            <div class="order-form__field order-form__field--wide">
+
+                <label
+                        class="order-form__label"
+                        for="feedback-message"
+                >
+                    Ваше сообщение
+                </label>
+
+                <!-- textarea предназначена для длинного текста.
+                     minlength не допускает слишком короткое сообщение. -->
+                <textarea
+                        class="order-form__textarea"
+                        id="feedback-message"
+                        name="message"
+                        rows="5"
+                        minlength="10"
+                        placeholder="Напишите, какой вопрос у вас возник"
+                        required
+                ></textarea>
+
+            </div>
+
+
+            <!-- Согласие на обработку персональных данных. -->
+            <div class="order-form__field order-form__field--checkbox order-form__field--wide">
+
+                <!-- Чекбокс внутри label связан
+                     с подписью без дополнительного for. -->
+                <label class="order-form__label order-form__label--checkbox">
+
+                    <input
+                            class="order-form__input order-form__input--checkbox"
+                            id="feedback-agreement"
+                            name="agreement"
+                            type="checkbox"
+                            required
+                    >
+
+                    Я согласен на обработку персональных данных
+
+                </label>
+
+            </div>
+
+
+            <!-- Кнопка отправки учебной формы. -->
+            <div class="order-form__actions">
+
+                <button
+                        class="button button--primary"
+                        type="submit"
+                >
+                    Отправить сообщение
+                </button>
+
+            </div>
+
+        </form>
+
+        <!-- Пояснение, что проект учебный и
+             серверная отправка сообщений не реализована. -->
+        <p class="order-form__hint">
+            Это демонстрационная форма учебного проекта.
+            Данные не отправляются на сервер.
+        </p>
+
+        <!-- Практика №13: role="status" позволяет
+             сообщить результат без переноса фокуса. -->
+        <p
+                class="order-form__hint"
+                id="feedback-status"
+                role="status"
+                hidden
+        ></p>
+
+    </section>
+
 </main>
 
 
-<!-- Подвал -->
+<!-- =========================================
+     ПОДВАЛ
+     Практика №14: финальная проверка
+     ========================================= -->
+
+<!-- Flexbox в CSS прижимает подвал к низу
+     коротких страниц и не перекрывает содержимое. -->
 <footer class="site-footer">
 
     <p class="site-footer__text">
@@ -185,6 +450,27 @@
     </p>
 
 </footer>
+
+
+<!-- =========================================
+     ОБРАБОТЧИК УЧЕБНОЙ ФОРМЫ ОБРАТНОЙ СВЯЗИ
+     ========================================= -->
+
+<script>
+    // Получаем форму и элемент для сообщения пользователю.
+    const feedbackForm = document.getElementById("feedback-form");
+    const feedbackStatus = document.getElementById("feedback-status");
+
+    // Проверенная браузером форма не отправляется на сервер.
+    feedbackForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        feedbackStatus.textContent =
+            "Форма заполнена правильно. Это учебная версия: отправка сообщений на сервер не настроена.";
+
+        feedbackStatus.hidden = false;
+    });
+</script>
 
 </body>
 </html>
