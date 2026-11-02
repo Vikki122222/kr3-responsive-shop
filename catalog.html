@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+            name="description"
+            content="Каталог косплей-костюмов и аксессуаров AEGIS COSPLAY."
+    >
+
+    <title>Каталог костюмов — AEGIS COSPLAY</title>
+
+    <!-- Подключаем общий файл стилей -->
+    <link rel="stylesheet" href="../kr1-html-css-shop-main/kr1-html-css-shop-main/css/style.css">
+
+    <!-- Данные для отображения ссылки на сайт -->
+    <meta property="og:type" content="website">
+
+    <meta
+            property="og:title"
+            content="Каталог — AEGIS COSPLAY"
+    >
+
+    <meta
+            property="og:description"
+            content="Косплей-костюмы для фестивалей, фотосессий и ярких перевоплощений."
+    >
+
+    <meta
+            property="og:image"
+            content="images/athena.jpg"
+    >
+</head>
+
+
+<body>
+
+
+<!-- Шапка сайта -->
+<header class="site-header">
+
+    <div class="site-header__inner">
+
+        <!-- Логотип возвращает пользователя на главную -->
+        <a
+                class="site-header__logo"
+                href="index.html"
+        >
+            AEGIS COSPLAY
+        </a>
+
+
+        <!-- Основная навигация сайта -->
+        <nav
+                class="site-nav"
+                aria-label="Основная навигация"
+        >
+
+            <ul class="site-nav__list">
+
+                <li class="site-nav__item">
+
+                    <a
+                            class="site-nav__link"
+                            href="index.html"
+                    >
+                        Главная
+                    </a>
+
+                </li>
+
+
+                <li class="site-nav__item">
+
+                    <!-- Активная ссылка показывает текущую страницу -->
+                    <a
+                            class="site-nav__link site-nav__link--active"
+                            href="catalog.html"
+                    >
+                        Каталог
+                    </a>
+
+                </li>
+
+
+                <li class="site-nav__item">
+
+                    <a
+                            class="site-nav__link"
+                            href="../kr1-html-css-shop-main/kr1-html-css-shop-main/contacts.html"
+                    >
+                        Контакты
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+    <!-- Хлебные крошки показывают путь до текущей страницы -->
+    <nav
+            class="breadcrumbs"
+            aria-label="Хлебные крошки"
+    >
+
+        <a
+                class="breadcrumbs__link"
+                href="index.html"
+        >
+            Главная
+        </a>
+
+        <span class="breadcrumbs__current">
+            Каталог
+        </span>
+
+    </nav>
+
+
+    <!-- Заголовок и описание каталога -->
+    <section class="section">
+
+        <h1 class="section__title">
+            Каталог косплей-костюмов
+        </h1>
+
+        <p>
+            Выберите образ для фестиваля, фотосессии
+            или тематического мероприятия. В каталоге
+            представлены костюмы в стиле фэнтези,
+            мифологии и оригинальные авторские образы.
+        </p>
+
+    </section>
+
+
+    <!-- Основная область каталога -->
+    <section class="catalog-layout">
+
+
+        <!-- Панель фильтров -->
+        <aside class="catalog-filters">
+
+            <h2>
+                Фильтры
+            </h2>
+
+
+            <!-- Фильтры статические и показывают элементы интерфейса -->
+            <form
+                    class="catalog-filters__form"
+                    action="#"
+                    method="get"
+            >
+
+
+                <!-- Первая группа фильтров -->
+                <fieldset class="catalog-filters__group">
+
+                    <legend class="catalog-filters__legend">
+                        Категория
+                    </legend>
+
+
+                    <label class="catalog-filters__label">
+
+                        <input
+                                type="checkbox"
+                                name="category"
+                                value="all"
+                        >
+
+                        Все костюмы
+
+                    </label>
+
+
+                    <label class="catalog-filters__label">
+
+                        <input
+                                type="checkbox"
+                                name="category"
+                                value="popular"
+                        >
+
+                        Популярные
+
+                    </label>
+
+
+                    <label class="catalog-filters__label">
+
+                        <input
+                                type="checkbox"
+                                name="category"
+                                value="new"
+                        >
+
+                        Новинки
+
+                    </label>
+
+                </fieldset>
+
+
+                <!-- Вторая группа фильтров по тематике -->
+                <fieldset class="catalog-filters__group">
+
+                    <legend class="catalog-filters__legend">
+                        Тематика
+                    </legend>
+
+
+                    <label class="catalog-filters__label">
+
+                        <input
+                                type="checkbox"
+                                name="style"
+                                value="fantasy"
+                        >
+
+                        Фэнтези
+
+                    </label>
+
+
+                    <label class="catalog-filters__label">
+
+                        <input
+                                type="checkbox"
+                                name="style"
+                                value="mythology"
+                        >
+
+                        Мифология
+
+                    </label>
+
+
+                    <label class="catalog-filters__label">
+
+                        <input
+                                type="checkbox"
+                                name="style"
+                                value="magic"
+                        >
+
+                        Магические образы
+
+                    </label>
+
+                </fieldset>
+
+
+                <!-- Кнопка отправляет выбранные параметры формы -->
+                <button
+                        class="button button--primary"
+                        type="submit"
+                >
+                    Применить
+                </button>
+
+            </form>
+
+        </aside>
+
+
+        <!-- Список товаров -->
+        <section class="catalog-layout__products">
+
+            <h2 class="section__title">
+                Все костюмы
+            </h2>
+
+
+            <!-- Сетка карточек товаров -->
+            <div class="products-grid">
+
+
+                <!-- Карточка Афины -->
+                <article class="product-card product-card--featured">
+
+                    <!-- Фото открывает подробную страницу товара -->
+                    <a
+                            class="product-card__image-link"
+                            href="../kr1-html-css-shop-main/kr1-html-css-shop-main/product.html"
+                    >
+
+                        <img
+                                class="product-card__image"
+                                src="../kr1-html-css-shop-main/kr1-html-css-shop-main/images/athena.jpg"
+                                alt="Косплей-костюм Афины"
+                        >
+
+                    </a>
+
+
+                    <h3 class="product-card__title">
+                        Костюм Афины
+                    </h3>
+
+
+                    <p class="product-card__description">
+                        Образ богини мудрости в античном стиле
+                        с декоративной бронёй и золотыми элементами.
+                    </p>
+
+
+                    <p class="product-card__price">
+                        Цена: 12 900 руб.
+                    </p>
+
+
+                    <!-- У Афины есть отдельная страница товара -->
+                    <a
+                            class="button button--primary product-card__button"
+                            href="../kr1-html-css-shop-main/kr1-html-css-shop-main/product.html"
+                    >
+                        Подробнее
+                    </a>
+
+                </article>
+
+
+                <!-- Карточка Лунной волшебницы -->
+                <article class="product-card">
+
+                    <!-- Для этого товара пока нет отдельной страницы -->
+                    <div class="product-card__image-link">
+
+                        <img
+                                class="product-card__image product-card__image--moon"
+                                src="../kr1-html-css-shop-main/kr1-html-css-shop-main/images/moon-sorceress.jpg"
+                                alt="Косплей-костюм Лунной волшебницы"
+                        >
+
+                    </div>
+
+
+                    <h3 class="product-card__title">
+                        Лунная волшебница
+                    </h3>
+
+
+                    <p class="product-card__description">
+                        Фэнтезийный костюм в светлых оттенках
+                        с декоративными элементами и аксессуарами.
+                    </p>
+
+
+                    <p class="product-card__price">
+                        Цена: 9 500 руб.
+                    </p>
+
+
+                    <a
+                            class="button button--primary product-card__button"
+                            href="#"
+                    >
+                        Подробнее
+                    </a>
+
+                </article>
+
+
+                <!-- Карточка Тёмной охотницы -->
+                <article class="product-card">
+
+                    <!-- Здесь нет модификатора discount,
+                         поэтому карточка не подсвечивается красным -->
+                    <div class="product-card__image-link">
+
+                        <img
+                                class="product-card__image"
+                                src="../kr1-html-css-shop-main/kr1-html-css-shop-main/images/dark-huntress.jpg"
+                                alt="Косплей-костюм Тёмной охотницы"
+                        >
+
+                    </div>
+
+
+                    <h3 class="product-card__title">
+                        Тёмная охотница
+                    </h3>
+
+
+                    <p class="product-card__description">
+                        Детализированный образ в тёмном фэнтезийном стиле
+                        для фестивалей и тематических фотосессий.
+                    </p>
+
+
+                    <p class="product-card__price">
+                        Цена: 11 400 руб.
+                    </p>
+
+
+                    <a
+                            class="button button--primary product-card__button"
+                            href="#"
+                    >
+                        Подробнее
+                    </a>
+
+                </article>
+
+
+                <!-- Карточка Лесной эльфийки -->
+                <article class="product-card">
+
+                    <!-- Заглушка используется, пока фото не добавлено -->
+                    <div class="product-card__image-placeholder">
+                        Фото костюма
+                    </div>
+
+
+                    <h3 class="product-card__title">
+                        Лесная эльфийка
+                    </h3>
+
+
+                    <p class="product-card__description">
+                        Лёгкий фэнтезийный образ в природных оттенках
+                        с декоративными элементами.
+                    </p>
+
+
+                    <p class="product-card__price">
+                        Цена: 10 900 руб.
+                    </p>
+
+
+                    <a
+                            class="button button--primary product-card__button"
+                            href="#"
+                    >
+                        Подробнее
+                    </a>
+
+                </article>
+
+
+                <!-- Карточка Воительницы Севера -->
+                <article class="product-card">
+
+                    <div class="product-card__image-placeholder">
+                        Фото костюма
+                    </div>
+
+
+                    <h3 class="product-card__title">
+                        Воительница Севера
+                    </h3>
+
+
+                    <p class="product-card__description">
+                        Образ северной воительницы с декоративной бронёй
+                        и элементами фэнтези.
+                    </p>
+
+
+                    <p class="product-card__price">
+                        Цена: 13 500 руб.
+                    </p>
+
+
+                    <a
+                            class="button button--primary product-card__button"
+                            href="#"
+                    >
+                        Подробнее
+                    </a>
+
+                </article>
+
+
+                <!-- Карточка Академии магии -->
+                <article class="product-card">
+
+                    <div class="product-card__image-placeholder">
+                        Фото костюма
+                    </div>
+
+
+                    <h3 class="product-card__title">
+                        Академия магии
+                    </h3>
+
+
+                    <p class="product-card__description">
+                        Костюм ученицы магической академии
+                        для фестивалей, фотосессий и тематических мероприятий.
+                    </p>
+
+
+                    <p class="product-card__price">
+                        Цена: 8 900 руб.
+                    </p>
+
+
+                    <a
+                            class="button button--primary product-card__button"
+                            href="#"
+                    >
+                        Подробнее
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </section>
+
+</main>
+
+
+<!-- Подвал сайта -->
+<footer class="site-footer">
+
+    <p class="site-footer__text">
+        &copy; 2026 AEGIS COSPLAY. Все права защищены.
+    </p>
+
+    <p class="site-footer__text">
+        Учебный проект по дисциплине
+        «Фронтенд и бэкенд разработка»
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
