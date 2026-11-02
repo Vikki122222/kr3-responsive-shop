@@ -1,407 +1,146 @@
 /*
   Адаптивные стили для контрольной работы №3.
-  Подход: Mobile First.
-  Базовые стили рассчитаны на мобильный экран.
-  Расширения добавляются через min-width медиазапросы.
+  Практическая работа №12. Подход Mobile First:
+  базовые правила — для телефона, расширения — через min-width.
 */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+img, video { max-width: 100%; height: auto; }
+body { overflow-x: hidden; }
 
-/* Базовые правила */
+/* Шапка и навигация: на телефоне ссылки в колонку. */
+.site-header { position: static; width: 100%; }
+.site-header__inner { width: min(100% - 16px, 806px); margin-inline: auto; padding: 12px 8px; }
+.site-nav__list { display: flex; flex-direction: column; align-items: stretch; gap: 3px; margin-top: 8px; }
+.site-nav__link { display: block; padding: 9px 12px; }
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+/* Контейнеры и секции. */
+main { padding: 16px; }
+@media (min-width: 900px) { main { padding-top: 18px; } }
+.hero, .section, .aside-info, .breadcrumbs, .catalog-layout, .product, .order-page {
+  width: min(100%, 1100px);
+  margin-inline: auto;
 }
+.hero, .section, .aside-info { margin-bottom: 40px; }
+.hero { margin-bottom: 36px; }
+.section { padding-block: 2px; }
 
-html {
-    scroll-behavior: smooth;
-}
-
-img,
-video {
-    max-width: 100%;
-    height: auto;
-}
-
-body {
-    overflow-x: hidden;
-}
-
-/* Контейнеры */
-
-main {
-    padding: 24px 16px;
-}
-
-.section,
-.hero,
-.catalog-layout,
-.product,
-.breadcrumbs,
-.aside-info {
-    width: 100%;
-    max-width: var(--container-width);
-    margin-inline: auto;
-}
-
-.section {
-    padding-block: 24px;
-}
-
-/* Шапка и навигация */
-
-.site-header {
-    position: static;
-}
-
-.site-header__inner {
-    padding: 16px;
-}
-
-.site-nav__list {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-sm);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.site-nav__link {
-    display: block;
-    padding: 12px 16px;
-}
-
-#advantages,
-#popular {
-    scroll-margin-top: 16px;
-}
-
-/* Главный экран */
-
+/* Главный экран: изображение под описанием на телефоне. */
 .hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    align-items: center;
-    gap: var(--space-lg);
-    padding: 24px 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  min-height: 0;
 }
+.hero__content { width: 100%; min-width: 0; flex: initial; }
+.hero__title { font-size: clamp(30px, 7vw, 40px); line-height: 1.12; overflow-wrap: break-word; }
+.hero__image-wrapper { width: 100%; max-width: 100%; min-width: 0; flex: initial; }
+.hero__image-wrapper picture { display: block; width: 100%; }
+.hero__image { width: 100%; max-height: none; aspect-ratio: 378 / 307; object-fit: cover; }
 
-.hero__content {
-    display: grid;
-    gap: var(--space-lg);
-    min-width: 0;
+/* Карточки и изображения. */
+.products-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.product-card { min-width: 0; }
+.product-card__title, .product-card__description { overflow-wrap: anywhere; }
+.product-card__image { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.product-card__image--moon { object-fit: contain; }
+
+/* Каталог: фильтры идут перед товарами. */
+.catalog-layout { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "filters" "products"; gap: 24px; }
+.catalog-filters { min-width: 0; position: static; }
+.catalog-layout__products { min-width: 0; }
+.catalog-filters__input { max-width: 100%; min-height: 44px; }
+
+/* Страница товара, форма заявки, таблица. */
+.product { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 16px; }
+.product__image-wrapper { min-width: 0; min-height: 0; }
+.product__image { height: auto; max-height: 560px; object-fit: contain; }
+.product__content { min-width: 0; width: 100%; }
+.product__details { min-width: 0; padding: 10px; }
+.table-wrapper { width: 100%; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.product-table { width: 100%; min-width: 640px; border-collapse: collapse; }
+.order-page__layout { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.order-summary, .order-page__form { min-width: 0; }
+.order-summary__image { height: auto; max-height: 420px; object-fit: contain; }
+.order-form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.order-form__field { min-width: 0; margin: 0; }
+.order-form__input, .order-form__textarea, .order-form__select {
+  width: 100%; max-width: 100%; min-height: 44px; padding: 10px 12px; font: inherit;
 }
-
-.hero__title {
-    font-size: clamp(32px, 5vw, 56px);
-    line-height: 1.1;
-}
-
-.hero__button {
-    justify-self: start;
-}
-
-.hero__image-wrapper {
-    width: 100%;
-    max-width: 520px;
-    min-width: 0;
-    margin-inline: auto;
-}
-
-.hero__image {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: 520px;
-    margin-inline: auto;
-}
-
-/* Сетка карточек */
-
-.products-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-md);
-}
-
-.product-card {
-    min-width: 0;
-}
-
-.product-card__title,
-.product-card__description {
-    overflow-wrap: anywhere;
-}
-
-/* Каталог */
-
-.catalog-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-        "filters"
-        "products";
-    gap: var(--space-lg);
-}
-
-.catalog-filters {
-    position: static;
-    min-width: 0;
-    order: -1;
-}
-
-.catalog-layout__products {
-    min-width: 0;
-}
-
-/* Изображения карточек */
-
-.product-card__image {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius:
-            var(--radius-md)
-            var(--radius-md)
-            0
-            0;
-}
-
-.product-card__image--moon {
-    object-fit: contain;
-}
-
-/* Незакреплённый подвал */
-
-.site-footer {
-    position: static;
-    padding: 16px;
-}
-
-/* Небольшой планшет */
+.order-form__input--checkbox { width: auto; min-height: 0; }
+.order-form__textarea { min-height: 120px; resize: vertical; }
+.order-form__actions { flex-wrap: wrap; margin-top: 0; }
+.order-dialog { width: min(100% - 32px, 560px); max-height: calc(100dvh - 32px); overflow: auto; }
+.site-footer { position: static; }
 
 @media (min-width: 640px) {
-    .products-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+  .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-
-/* Планшет */
 
 @media (min-width: 768px) {
-    .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-    }
-
-    .site-header__inner {
-        padding: 24px;
-    }
-
-    .site-nav__list {
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-    }
-
-    #advantages,
-    #popular {
-        scroll-margin-top: 160px;
-    }
-
-    .hero {
-        padding: 32px;
-    }
-
-    .site-footer {
-        padding: 24px;
-    }
+  .site-header { position: sticky; top: 0; z-index: 100; }
+  .site-header__inner { padding: 8px 18px 18px; }
+  .site-nav__list { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 3px; }
+  .site-nav__link { padding: 9px 9px; }
+  .order-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .order-form__field--wide, .order-form__field--checkbox, .order-form__actions { grid-column: 1 / -1; }
 }
-
-/* Двухколоночный главный экран */
 
 @media (min-width: 900px) {
-    .hero {
-        grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
-    }
+  .hero { max-width: 806px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.065fr); gap: 24px; padding: 23px; min-height: 356px; }
+  .hero__image { height: 308px; }
+  .section, .aside-info { max-width: 806px; }
+  .section#popular { max-width: 1100px; }
 }
-
-/* Desktop */
 
 @media (min-width: 1024px) {
-    .products-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .catalog-layout {
-        grid-template-columns: 280px minmax(0, 1fr);
-        grid-template-areas: "filters products";
-        align-items: start;
-    }
-
-    .catalog-filters {
-        position: sticky;
-        top: 160px;
-        order: initial;
-    }
+  .products-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .catalog-layout { max-width: 1100px; grid-template-columns: 240px minmax(0, 1fr); grid-template-areas: "filters products"; align-items: start; }
+  .catalog-filters { position: sticky; top: 96px; }
+  .order-page { max-width: 1100px; }
+  .order-page__layout { grid-template-columns: 320px minmax(0, 1fr); }
 }
 
-/* Широкий экран */
+@media (min-width: 1200px) {
+  .product { max-width: 1100px; grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr); }
+}
 
 @media (min-width: 1280px) {
-    .products-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
+  .products-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
-
-/* Уменьшение анимации */
 
 @media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
+  html { scroll-behavior: auto; }
 }
 
-
-/* Декоративные волшебные палочки по бокам главного блока */
-
-.hero {
-    position: relative;
+/* Практическое занятие №13 — доступность интерфейса. */
+.skip-link {
+  position: fixed;
+  top: -120px;
+  left: 16px;
+  z-index: 2000;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: #211e25;
+  color: #fff;
+  text-decoration: none;
+}
+.skip-link:focus, .skip-link:focus-visible { top: 12px; }
+:focus-visible {
+  outline: 3px solid #e6ceff;
+  outline-offset: 3px;
+}
+main:focus { outline: none; }
+.product-card__button--unavailable {
+  opacity: .65;
+  cursor: default;
+  pointer-events: none;
 }
 
-@media (min-width: 1400px) {
-    .hero::before,
-    .hero::after {
-        content: "";
-        position: absolute;
-        width: 90px;
-        height: 180px;
-        pointer-events: none;
-        opacity: 0.55;
-
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 180'%3E%3Cpath d='M42 69L66 156' fill='none' stroke='%23c1a5df' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M39 25L47 43L67 46L52 60L55 80L37 70L19 79L23 59L9 44L29 42Z' fill='%233e314b' stroke='%23c1a5df' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='M73 12V26M66 19H80M15 101V113M9 107H21' fill='none' stroke='%23d6c1eb' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='15' cy='17' r='2.5' fill='%23c1a5df'/%3E%3Ccircle cx='77' cy='94' r='2' fill='%23c1a5df'/%3E%3C/svg%3E");
-
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-    }
-
-    .hero::before {
-        top: 55px;
-        left: -120px;
-        transform: rotate(-18deg);
-    }
-
-    .hero::after {
-        right: -120px;
-        bottom: 45px;
-        transform: rotate(22deg);
-    }
-}
-
-/* Этап 15. Адаптация формы заявки */
-
-.order-page__form {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-md);
-    width: 100%;
-    min-width: 0;
-}
-
-.order-page__form .order-form__field {
-    display: grid;
-    align-content: start;
-    gap: var(--space-xs);
-    min-width: 0;
-    margin-bottom: 0;
-}
-
-.order-page__form .order-form__label {
-    margin-bottom: 0;
-}
-
-.order-page__form .order-form__input,
-.order-page__form .order-form__textarea,
-.order-page__form .order-form__select {
-    width: 100%;
-    min-width: 0;
-    min-height: 44px;
-    padding: 10px 12px;
-    font: inherit;
-}
-
-.order-page__form .order-form__textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-/* Чекбокс сохраняет свой обычный размер */
-
-.order-page__form .order-form__input--checkbox {
-    width: auto;
-    min-height: auto;
-    padding: 0;
-    flex-shrink: 0;
-}
-
-.order-page__form .order-form__actions {
-    grid-column: 1 / -1;
-}
-
-@media (min-width: 768px) {
-    .order-page__form {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .order-page__form .order-form__field--wide {
-        grid-column: 1 / -1;
-    }
-}
-
-/* Этап 16. Адаптация таблицы характеристик */
-
-.product__content {
-    min-width: 0;
-}
-
-.product__details {
-    min-width: 0;
-    max-width: 100%;
-}
-
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-.product-table {
-    width: 100%;
-    min-width: 640px;
-    border-collapse: collapse;
-}
-
-.product-table th,
-.product-table td {
-    padding: 12px;
-    border: 1px solid var(--color-border);
-    text-align: left;
-}
-
-/* Этап 17. Адаптация модального окна */
-
-.order-dialog {
-    width: min(100% - 32px, 560px);
-    max-height: calc(100vh - 32px);
-    overflow: auto;
-}
-
-.order-dialog::backdrop {
-    background: rgb(0 0 0 / 0.5);
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid #e6ceff;
+  outline-offset: 3px;
 }
