@@ -1,31 +1,100 @@
+
 /*
-  Адаптивные стили для контрольной работы №3.
-  Практическая работа №12. Подход Mobile First:
-  базовые правила — для телефона, расширения — через min-width.
+  AEGIS COSPLAY — адаптивные стили для КР №3
+
+  Практика №12: Mobile First, медиазапросы,
+  адаптивные изображения, формы и таблицы.
+
+  Практика №13: доступность, клавиатурная
+  навигация и видимый фокус.
+
+  Практика №14: финальная проверка проекта.
+  Ниже также находится обновлённый дизайн сайта.
 */
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-img, video { max-width: 100%; height: auto; }
-body { overflow-x: hidden; }
 
-/* Шапка и навигация: на телефоне ссылки в колонку. */
-.site-header { position: static; width: 100%; }
-.site-header__inner { width: min(100% - 16px, 806px); margin-inline: auto; padding: 12px 8px; }
-.site-nav__list { display: flex; flex-direction: column; align-items: stretch; gap: 3px; margin-top: 8px; }
-.site-nav__link { display: block; padding: 9px 12px; }
+/* =========================================
+   ПРАКТИКА №12 — АДАПТИВНАЯ ВЁРСТКА
+   ========================================= */
 
-/* Контейнеры и секции. */
-main { padding: 16px; }
-@media (min-width: 900px) { main { padding-top: 18px; } }
-.hero, .section, .aside-info, .breadcrumbs, .catalog-layout, .product, .order-page {
+/* Единая модель расчёта размеров элементов. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Изображения не выходят за границы контейнеров. */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* На телефонах шапка располагается обычным блоком. */
+.site-header {
+  position: static;
+  width: 100%;
+}
+
+.site-header__inner {
+  width: min(100% - 16px, 806px);
+  margin-inline: auto;
+  padding: 12px 8px;
+}
+
+/* Mobile First: меню по умолчанию вертикальное. */
+.site-nav__list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 3px;
+  margin-top: 8px;
+}
+
+.site-nav__link {
+  display: block;
+  padding: 9px 12px;
+}
+
+/* Основные контейнеры подстраиваются под экран. */
+main {
+  padding: 16px;
+}
+
+.hero,
+.section,
+.aside-info,
+.breadcrumbs,
+.catalog-layout,
+.product,
+.order-page {
   width: min(100%, 1100px);
   margin-inline: auto;
 }
-.hero, .section, .aside-info { margin-bottom: 40px; }
-.hero { margin-bottom: 36px; }
-.section { padding-block: 2px; }
 
-/* Главный экран: изображение под описанием на телефоне. */
+.hero,
+.section,
+.aside-info {
+  margin-bottom: 40px;
+}
+
+.hero {
+  margin-bottom: 36px;
+}
+
+.section {
+  padding-block: 2px;
+}
+
+/* Главный блок: одна колонка на мобильном. */
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -34,88 +103,326 @@ main { padding: 16px; }
   padding: 20px;
   min-height: 0;
 }
-.hero__content { width: 100%; min-width: 0; flex: initial; }
-.hero__title { font-size: clamp(30px, 7vw, 40px); line-height: 1.12; overflow-wrap: break-word; }
-.hero__image-wrapper { width: 100%; max-width: 100%; min-width: 0; flex: initial; }
-.hero__image-wrapper picture { display: block; width: 100%; }
-.hero__image { width: 100%; max-height: none; aspect-ratio: 378 / 307; object-fit: cover; }
 
-/* Карточки и изображения. */
-.products-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
-.product-card { min-width: 0; }
-.product-card__title, .product-card__description { overflow-wrap: anywhere; }
-.product-card__image { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
-.product-card__image--moon { object-fit: contain; }
-
-/* Каталог: фильтры идут перед товарами. */
-.catalog-layout { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "filters" "products"; gap: 24px; }
-.catalog-filters { min-width: 0; position: static; }
-.catalog-layout__products { min-width: 0; }
-.catalog-filters__input { max-width: 100%; min-height: 44px; }
-
-/* Страница товара, форма заявки, таблица. */
-.product { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 16px; }
-.product__image-wrapper { min-width: 0; min-height: 0; }
-.product__image { height: auto; max-height: 560px; object-fit: contain; }
-.product__content { min-width: 0; width: 100%; }
-.product__details { min-width: 0; padding: 10px; }
-.table-wrapper { width: 100%; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.product-table { width: 100%; min-width: 640px; border-collapse: collapse; }
-.order-page__layout { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-.order-summary, .order-page__form { min-width: 0; }
-.order-summary__image { height: auto; max-height: 420px; object-fit: contain; }
-.order-form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
-.order-form__field { min-width: 0; margin: 0; }
-.order-form__input, .order-form__textarea, .order-form__select {
-  width: 100%; max-width: 100%; min-height: 44px; padding: 10px 12px; font: inherit;
+.hero__content {
+  width: 100%;
+  min-width: 0;
+  flex: initial;
 }
-.order-form__input--checkbox { width: auto; min-height: 0; }
-.order-form__textarea { min-height: 120px; resize: vertical; }
-.order-form__actions { flex-wrap: wrap; margin-top: 0; }
-.order-dialog { width: min(100% - 32px, 560px); max-height: calc(100dvh - 32px); overflow: auto; }
-.site-footer { position: static; }
 
+/* clamp() плавно изменяет размер заголовка. */
+.hero__title {
+  font-size: clamp(30px, 7vw, 40px);
+  line-height: 1.12;
+  overflow-wrap: break-word;
+}
+
+.hero__image-wrapper {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex: initial;
+}
+
+.hero__image-wrapper picture {
+  display: block;
+  width: 100%;
+}
+
+.hero__image {
+  width: 100%;
+  max-height: none;
+  aspect-ratio: 378 / 307;
+  object-fit: cover;
+}
+
+/* Карточки: одна колонка на маленьких экранах. */
+.products-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+.product-card {
+  min-width: 0;
+}
+
+.product-card__title,
+.product-card__description {
+  overflow-wrap: anywhere;
+}
+
+/* object-fit сохраняет пропорции фотографий. */
+.product-card__image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.product-card__image--moon {
+  object-fit: contain;
+}
+
+/* Фильтры каталога на мобильном идут перед товарами. */
+.catalog-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "filters"
+    "products";
+  gap: 24px;
+}
+
+.catalog-filters {
+  min-width: 0;
+  position: static;
+}
+
+.catalog-layout__products {
+  min-width: 0;
+}
+
+.catalog-filters__input {
+  max-width: 100%;
+  min-height: 44px;
+}
+
+/* Карточка товара занимает всю ширину на телефоне. */
+.product {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  padding: 16px;
+}
+
+.product__image-wrapper {
+  min-width: 0;
+  min-height: 0;
+}
+
+.product__image {
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+}
+
+.product__content {
+  min-width: 0;
+  width: 100%;
+}
+
+.product__details {
+  min-width: 0;
+  padding: 10px;
+}
+
+/* Таблица прокручивается внутри контейнера,
+   не создавая горизонтальный скролл всей страницы. */
+.table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+}
+
+/* Блоки страницы заказа на телефоне идут друг под другом. */
+.order-page__layout {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+
+.order-summary,
+.order-page__form {
+  min-width: 0;
+}
+
+.order-summary__image {
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+}
+
+/* Поля формы удобны для нажатия с телефона. */
+.order-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+.order-form__field {
+  min-width: 0;
+  margin: 0;
+}
+
+.order-form__input,
+.order-form__textarea,
+.order-form__select {
+  width: 100%;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.order-form__input--checkbox {
+  width: auto;
+  min-height: 0;
+}
+
+.order-form__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.order-form__actions {
+  flex-wrap: wrap;
+  margin-top: 0;
+}
+
+/* Модальное окно не выходит за границы экрана. */
+.order-dialog {
+  width: min(100% - 32px, 560px);
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+}
+
+.site-footer {
+  position: static;
+}
+
+/* На планшете карточки перестраиваются в две колонки. */
 @media (min-width: 640px) {
-  .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
+/* С 768px меню горизонтальное, форма — в две колонки. */
 @media (min-width: 768px) {
-  .site-header { position: sticky; top: 0; z-index: 100; }
-  .site-header__inner { padding: 8px 18px 18px; }
-  .site-nav__list { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 3px; }
-  .site-nav__link { padding: 9px 9px; }
-  .order-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .order-form__field--wide, .order-form__field--checkbox, .order-form__actions { grid-column: 1 / -1; }
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .site-header__inner {
+    padding: 8px 18px 18px;
+  }
+
+  .site-nav__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 3px;
+  }
+
+  .site-nav__link {
+    padding: 9px;
+  }
+
+  .order-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .order-form__field--wide,
+  .order-form__field--checkbox,
+  .order-form__actions {
+    grid-column: 1 / -1;
+  }
 }
 
+/* Две колонки для hero-блока на компьютере. */
 @media (min-width: 900px) {
-  .hero { max-width: 806px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.065fr); gap: 24px; padding: 23px; min-height: 356px; }
-  .hero__image { height: 308px; }
-  .section, .aside-info { max-width: 806px; }
-  .section#popular { max-width: 1100px; }
+  main {
+    padding-top: 18px;
+  }
+
+  .hero {
+    max-width: 806px;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1.065fr);
+    gap: 24px;
+    padding: 23px;
+    min-height: 356px;
+  }
+
+  .hero__image {
+    height: 308px;
+  }
+
+  .section,
+  .aside-info {
+    max-width: 806px;
+  }
+
+  .section#popular {
+    max-width: 1100px;
+  }
 }
 
+/* Desktop: каталог с боковыми фильтрами. */
 @media (min-width: 1024px) {
-  .products-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .catalog-layout { max-width: 1100px; grid-template-columns: 240px minmax(0, 1fr); grid-template-areas: "filters products"; align-items: start; }
-  .catalog-filters { position: sticky; top: 96px; }
-  .order-page { max-width: 1100px; }
-  .order-page__layout { grid-template-columns: 320px minmax(0, 1fr); }
+  .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .catalog-layout {
+    max-width: 1100px;
+    grid-template-columns: 240px minmax(0, 1fr);
+    grid-template-areas: "filters products";
+    align-items: start;
+  }
+
+  .catalog-filters {
+    position: sticky;
+    top: 96px;
+  }
+
+  .order-page {
+    max-width: 1100px;
+  }
+
+  .order-page__layout {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
 }
 
+/* Широкая карточка товара на больших мониторах. */
 @media (min-width: 1200px) {
-  .product { max-width: 1100px; grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr); }
+  .product {
+    max-width: 1100px;
+    grid-template-columns:
+      minmax(0, 0.72fr)
+      minmax(0, 1.28fr);
+  }
 }
 
 @media (min-width: 1280px) {
-  .products-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .products-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
+/* Отключаем плавную прокрутку по настройкам системы. */
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html {
+    scroll-behavior: auto;
+  }
 }
 
-/* Практическое занятие №13 — доступность интерфейса. */
+/* =========================================
+   ПРАКТИКА №13 — ДОСТУПНОСТЬ
+   ========================================= */
+
+/* Ссылка пропуска меню видна при получении фокуса. */
 .skip-link {
   position: fixed;
   top: -120px;
@@ -127,20 +434,1227 @@ main { padding: 16px; }
   color: #fff;
   text-decoration: none;
 }
-.skip-link:focus, .skip-link:focus-visible { top: 12px; }
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 12px;
+}
+
+/* Видимая рамка при управлении сайтом с клавиатуры. */
 :focus-visible {
   outline: 3px solid #e6ceff;
   outline-offset: 3px;
 }
-main:focus { outline: none; }
+
+/* У основного контейнера нет собственного интерактивного состояния. */
+main:focus {
+  outline: none;
+}
+
+/* Недоступные товары визуально отличаются от активных. */
 .product-card__button--unavailable {
-  opacity: .65;
+  opacity: 0.65;
   cursor: default;
   pointer-events: none;
 }
 
-a:focus-visible, button:focus-visible, input:focus-visible,
-select:focus-visible, textarea:focus-visible {
+/* Фокус для ссылок, кнопок и элементов форм. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: 3px solid #e6ceff;
   outline-offset: 3px;
+}
+
+/* =========================================
+   ФИНАЛЬНОЕ ОФОРМЛЕНИЕ — ПРАКТИКА №14
+   Дополнительный дизайн перед сдачей
+   ========================================= */
+
+/* Цветовая палитра сайта. */
+:root {
+  --color-bg: #1b1722;
+  --color-text: #f7f2fa;
+  --color-muted: #d7cadf;
+  --color-primary: #d2b7ed;
+  --color-primary-dark: #bda0db;
+  --color-border: #61556a;
+  --color-surface: rgba(50, 43, 61, 0.78);
+  --color-surface-accent: rgba(64, 51, 75, 0.82);
+
+  --color-glass: rgba(53, 44, 64, 0.66);
+  --color-glass-light: rgba(57, 48, 67, 0.70);
+  --color-glass-border: rgba(217, 193, 235, 0.25);
+  --glass-blur: 18px;
+
+  --container-width: 1180px;
+  --radius-md: 15px;
+  --radius-lg: 22px;
+
+  --space-md: 18px;
+  --space-lg: 28px;
+  --space-xl: 38px;
+}
+
+/* Тёмный фон с мягкими фиолетовыми переходами. */
+body {
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text);
+
+  background:
+          radial-gradient(
+                  ellipse 750px 560px at 85% 5%,
+                  rgba(112, 77, 134, 0.17),
+                  transparent 75%
+          ),
+          radial-gradient(
+                  ellipse 680px 610px at 5% 45%,
+                  rgba(96, 67, 119, 0.11),
+                  transparent 75%
+          ),
+          #1b1722;
+}
+
+/* Общая типографика. */
+h1,
+h2,
+h3 {
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+}
+
+p {
+  line-height: 1.7;
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
+/* Полупрозрачная шапка с размытием фона. */
+.site-header {
+  border-bottom: 1px solid rgba(211, 186, 230, 0.18);
+  background: rgba(27, 23, 34, 0.89);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: min(calc(100% - 32px), 1180px);
+  max-width: 1180px;
+  padding: 18px 0;
+}
+
+.site-header__logo {
+  color: #e1c8f5;
+  font-size: 21px;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+}
+
+/* Навигация с подсветкой активной страницы. */
+.site-nav__list {
+  gap: 6px;
+  margin: 0;
+}
+
+.site-nav__link {
+  padding: 11px 14px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  color: #e6d8ed;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+
+  transition:
+          background-color 0.2s,
+          border-color 0.2s,
+          color 0.2s;
+}
+
+.site-nav__link:hover {
+  color: #fff;
+  background: rgba(204, 168, 234, 0.13);
+  border-color: rgba(210, 178, 236, 0.25);
+}
+
+.site-nav__link--active,
+.site-nav__link--active:hover {
+  color: #251b2e;
+  background: #d2b7ed;
+  border-color: #d2b7ed;
+}
+
+/* Ограничиваем ширину содержимого 1180px. */
+main {
+  padding: 30px 20px 70px;
+}
+
+.hero,
+.section,
+.aside-info,
+.breadcrumbs,
+.catalog-layout,
+.product,
+.order-page {
+  width: min(100%, 1180px);
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.section {
+  margin-bottom: 58px;
+  padding-block: 4px;
+}
+
+.section__title {
+  margin-bottom: 22px;
+  color: #dec4f1;
+  font-size: clamp(25px, 2.6vw, 32px);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+}
+
+.section > p {
+  max-width: 790px;
+  color: #e5dbe9;
+  font-size: 17px;
+}
+
+.breadcrumbs {
+  margin-bottom: 28px;
+  color: #d0c1d9;
+  font-size: 15px;
+}
+
+.breadcrumbs__link {
+  color: #e5cff5;
+}
+
+/* Отступ при переходе к якорным разделам. */
+#advantages,
+#popular {
+  scroll-margin-top: 115px;
+}
+
+/* Hero: крупный заголовок и полупрозрачная панель. */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 26px;
+  align-items: center;
+  max-width: 1180px;
+  min-height: 0;
+  margin-bottom: 64px;
+
+  padding: clamp(22px, 4.2vw, 52px);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 26px;
+
+  background: linear-gradient(
+          125deg,
+          rgba(68, 55, 76, 0.80),
+          rgba(44, 36, 55, 0.63)
+  );
+
+  box-shadow:
+          0 24px 65px rgba(12, 7, 18, 0.20),
+          inset 0 1px rgba(255, 255, 255, 0.055);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.hero__content {
+  min-width: 0;
+}
+
+.hero__title {
+  max-width: 540px;
+  margin-bottom: 20px;
+  color: #fff8fe;
+  font-size: clamp(37px, 5vw, 62px);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1.09;
+}
+
+.hero__text {
+  max-width: 465px;
+  margin-bottom: 30px;
+  color: #e5d6ea;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.hero__image-wrapper {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+}
+
+.hero__image-wrapper picture {
+  display: block;
+  width: 100%;
+}
+
+/* Фотография заполняет блок без искажения пропорций. */
+.hero__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  aspect-ratio: 1.23 / 1;
+  object-fit: cover;
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 18px;
+  box-shadow: 0 15px 36px rgba(10, 7, 15, 0.25);
+}
+
+/* Полупрозрачный блок преимуществ. */
+#advantages {
+  padding: 28px clamp(24px, 4vw, 46px);
+
+  border: 1px solid rgba(218, 188, 235, 0.20);
+  border-left: 3px solid #c4a3dc;
+  border-radius: 18px;
+
+  background: rgba(51, 42, 62, 0.47);
+  backdrop-filter: blur(13px);
+}
+
+#advantages .section__title {
+  margin-bottom: 18px;
+}
+
+.advantages-list {
+  margin: 0;
+  padding-left: 22px;
+  color: #e7d9ec;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.advantages-list li {
+  padding-bottom: 3px;
+  padding-left: 5px;
+}
+
+.advantages-list li::marker {
+  color: #d2b7ed;
+}
+
+/* Сетка карточек товаров. */
+.products-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 22px;
+}
+
+/* Полупрозрачные карточки с плавным hover-эффектом. */
+.product-card {
+  min-width: 0;
+  gap: 13px;
+  padding: 18px;
+
+  border: 1px solid rgba(216, 190, 235, 0.24);
+  border-radius: 20px;
+  background: rgba(56, 47, 65, 0.70);
+
+  box-shadow:
+          0 12px 35px rgba(8, 5, 12, 0.15),
+          inset 0 1px rgba(255, 255, 255, 0.03);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  transition:
+          transform 0.22s ease,
+          border-color 0.22s ease,
+          background-color 0.22s ease;
+}
+
+.product-card--featured {
+  background: rgba(74, 54, 86, 0.76);
+}
+
+.product-card:hover,
+.product-card--featured:hover {
+  transform: translateY(-3px);
+  border-color: rgba(219, 185, 241, 0.56);
+  background: rgba(76, 61, 87, 0.80);
+}
+
+/* Изображения карточек с закруглёнными краями. */
+.product-card__image-link {
+  margin: -18px -18px 8px;
+  border-radius: 19px 19px 0 0;
+}
+
+.product-card__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 19px 19px 0 0;
+}
+
+.product-card__image--moon {
+  object-fit: contain;
+  background: rgba(32, 24, 41, 0.90);
+}
+
+/* Заполнитель для карточки без фотографии. */
+.product-card__image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(100% + 36px);
+  height: auto;
+  aspect-ratio: 4 / 3;
+  margin: -18px -18px 8px;
+
+  border-radius: 19px 19px 0 0;
+  color: #e7d4f1;
+  background: rgba(121, 91, 139, 0.18);
+}
+
+/* Текст и цена товара. */
+.product-card__title {
+  color: #f8f2fa;
+  font-size: 21px;
+  font-weight: 750;
+}
+
+.product-card__description {
+  color: #e1d4e5;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.product-card__price {
+  color: #f2dffa;
+  font-size: 17px;
+  font-weight: 750;
+}
+
+/* Значок популярного товара. */
+.product-card__badge {
+  top: 14px;
+  right: 14px;
+  padding: 7px 12px;
+
+  border: 0;
+  border-radius: 999px;
+  background: #d2b7ed;
+  color: #2c2035;
+  font-size: 12px;
+}
+
+/* Общие стили кнопок. */
+.button {
+  padding: 12px 19px;
+  border-radius: 11px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  transition:
+          background-color 0.2s,
+          color 0.2s,
+          border-color 0.2s;
+}
+
+.button--primary {
+  color: #241b2d;
+  background: #d2b7ed;
+}
+
+.button--primary:hover {
+  color: #241b2d;
+  background: #e4cdf6;
+}
+
+.button--secondary {
+  color: #e4cff1;
+  border-color: #bca1d2;
+  background: rgba(188, 161, 210, 0.08);
+}
+
+.button--secondary:hover {
+  color: #241b2d;
+  background: #d2b7ed;
+}
+
+.button:disabled,
+.button--disabled {
+  opacity: 0.66;
+}
+
+/* =========================================
+   ОФОРМЛЕНИЕ КАТАЛОГА
+   ========================================= */
+
+.catalog-layout {
+  gap: 28px;
+  margin-bottom: 60px;
+}
+
+/* Боковая панель фильтров с эффектом стекла. */
+.catalog-filters {
+  padding: 24px;
+  border: 1px solid rgba(217, 191, 233, 0.24);
+  border-radius: 18px;
+  background: rgba(54, 44, 64, 0.73);
+
+  box-shadow: 0 10px 28px rgba(10, 7, 15, 0.14);
+  backdrop-filter: blur(16px);
+}
+
+.catalog-filters h2 {
+  margin: 0 0 24px;
+  font-size: 23px;
+}
+
+.catalog-filters__group {
+  padding: 16px;
+  border: 1px solid rgba(214, 185, 237, 0.23);
+  border-radius: 12px;
+}
+
+.catalog-filters__legend {
+  padding: 0 6px;
+  color: #f3e6fa;
+  font-size: 15px;
+}
+
+.catalog-filters__label {
+  color: #e7dbe9;
+  font-size: 15px;
+}
+
+.catalog-filters__label input {
+  accent-color: #cbb0e6;
+}
+
+.catalog-layout__products > .section__title {
+  margin-top: 4px;
+}
+
+/* =========================================
+   СТРАНИЦА ТОВАРА
+   ========================================= */
+
+/* Основная карточка товара на полупрозрачной панели. */
+.product {
+  padding: clamp(18px, 3vw, 36px);
+  gap: clamp(22px, 4vw, 46px);
+
+  border: 1px solid rgba(216, 191, 233, 0.25);
+  border-radius: 20px;
+  background: rgba(55, 45, 66, 0.74);
+
+  box-shadow: 0 16px 46px rgba(9, 6, 13, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.product__image-wrapper {
+  min-height: 0;
+  border-radius: 16px;
+}
+
+.product__image {
+  width: 100%;
+  max-height: 620px;
+  border-radius: 16px;
+}
+
+.product__category {
+  color: #e0c1f2;
+}
+
+.product__title {
+  font-size: clamp(32px, 3.6vw, 46px);
+}
+
+.product__description {
+  color: #e5d8e8;
+  font-size: 16px;
+}
+
+.product__price {
+  color: #f0d2fa !important;
+}
+
+.product__details {
+  padding: 18px;
+  border: 1px solid rgba(214, 191, 233, 0.23);
+  border-radius: 13px;
+  background: rgba(25, 19, 34, 0.22);
+}
+
+/* Таблица характеристик с контрастными заголовками. */
+.product-table {
+  background: rgba(29, 24, 36, 0.32);
+}
+
+.product-table th {
+  background: rgba(154, 118, 177, 0.25);
+}
+
+.product-table td {
+  color: #e3d8e8;
+}
+
+.product-table th,
+.product-table td {
+  border-color: rgba(211, 188, 226, 0.23);
+}
+
+/* =========================================
+   СТРАНИЦА ЗАКАЗА И ФОРМЫ
+   ========================================= */
+
+/* Отдельные панели для информации и формы. */
+.order-summary,
+.order-page__form {
+  padding: 26px;
+  border: 1px solid rgba(216, 191, 233, 0.25);
+  border-radius: 20px;
+  background: rgba(55, 45, 66, 0.74);
+
+  box-shadow: 0 16px 46px rgba(9, 6, 13, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.order-summary__image {
+  border-radius: 13px;
+}
+
+.order-summary__price {
+  color: #f0d2fa !important;
+}
+
+/* Подписи и поля форм. */
+.order-form__label {
+  color: #f0e6f5;
+  font-weight: 600;
+}
+
+.order-form__hint {
+  color: #d6c7df;
+}
+
+.order-page__form .order-form__input,
+.order-page__form .order-form__select,
+.order-page__form .order-form__textarea,
+.order-dialog .order-form__input,
+.order-dialog .order-form__select,
+.order-dialog .order-form__textarea {
+  border: 1px solid rgba(226, 205, 240, 0.35);
+  border-radius: 10px;
+  color: #292033;
+  background: #f7f2fa;
+}
+
+.order-form__input,
+.order-form__textarea,
+.order-form__select {
+  border-radius: 10px;
+}
+
+/* Модальное окно с затемнением страницы. */
+.order-dialog {
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+
+  border: 1px solid rgba(216, 191, 233, 0.25);
+  border-radius: 20px;
+  background: rgba(55, 45, 66, 0.95);
+  box-shadow: 0 20px 55px rgba(9, 6, 13, 0.35);
+}
+
+.order-dialog::backdrop {
+  background: rgba(10, 6, 16, 0.70);
+}
+
+/* Дополнительная информация и сообщение об успехе. */
+.aside-info {
+  padding: 24px;
+  border: 1px solid rgba(216, 191, 233, 0.25);
+  border-left: 3px solid #d1b3e7;
+  border-radius: 20px;
+
+  background: rgba(55, 45, 66, 0.73);
+  box-shadow: 0 16px 46px rgba(9, 6, 13, 0.15);
+  backdrop-filter: blur(16px);
+}
+
+.success-message {
+  border-radius: 12px;
+}
+
+/* Подвал в общей цветовой гамме сайта. */
+.site-footer {
+  padding: 30px 20px;
+  border-top: 1px solid rgba(209, 185, 227, 0.18);
+  background: rgba(24, 20, 31, 0.90);
+  color: #d5c8df;
+  font-size: 14px;
+}
+
+/* =========================================
+   ФИНАЛЬНАЯ АДАПТАЦИЯ ДИЗАЙНА
+   ========================================= */
+
+/* Телефоны: увеличенные кнопки и удобные отступы. */
+@media (max-width: 639px) {
+  main {
+    padding: 20px 14px 46px;
+  }
+
+  .site-header__inner {
+    width: min(calc(100% - 24px), 1180px);
+    padding: 15px 0;
+    gap: 10px;
+  }
+
+  .site-header__logo {
+    font-size: 19px;
+  }
+
+  .site-nav__link {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .hero {
+    padding: 22px;
+    gap: 24px;
+    margin-bottom: 38px;
+    border-radius: 20px;
+  }
+
+  .hero__title {
+    font-size: clamp(36px, 9vw, 45px);
+  }
+
+  .hero__text {
+    font-size: 16px;
+  }
+
+  #advantages {
+    padding: 23px;
+  }
+
+  .section {
+    margin-bottom: 42px;
+  }
+
+  .product-card__title {
+    font-size: 20px;
+  }
+
+  .catalog-filters {
+    padding: 20px;
+  }
+
+  .order-summary,
+  .order-page__form {
+    padding: 20px;
+  }
+
+  .button {
+    min-height: 44px;
+  }
+}
+
+/* Планшет: карточки в две колонки. */
+@media (min-width: 640px) {
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Горизонтальная навигация на широких экранах. */
+@media (min-width: 768px) {
+  .site-header__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 17px 0;
+  }
+
+  .site-nav__list {
+    margin: 0;
+    justify-content: flex-end;
+  }
+
+  .site-nav__link {
+    padding: 11px 13px;
+  }
+}
+
+/* Hero: текст слева, изображение справа. */
+@media (min-width: 900px) {
+  .hero {
+    max-width: 1180px;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1.05fr);
+
+    gap: clamp(28px, 4.3vw, 66px);
+    min-height: 460px;
+    padding: clamp(32px, 4.2vw, 52px);
+  }
+
+  .hero__image {
+    height: 380px;
+    aspect-ratio: 1.23 / 1;
+  }
+
+  .section,
+  .aside-info,
+  .section#popular {
+    max-width: 1180px;
+  }
+}
+
+/* Desktop: читаемые карточки и боковая панель. */
+@media (min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .catalog-layout {
+    max-width: 1180px;
+    grid-template-columns: 260px minmax(0, 1fr);
+    grid-template-areas: "filters products";
+    gap: 28px;
+  }
+
+  .catalog-layout .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .order-page {
+    max-width: 1180px;
+  }
+
+  .order-page__layout {
+    grid-template-columns: 340px minmax(0, 1fr);
+    gap: 28px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .product {
+    max-width: 1180px;
+    grid-template-columns:
+      minmax(0, 0.85fr)
+      minmax(0, 1.15fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1300px) {
+  .catalog-layout .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Уменьшаем движение по настройкам системы. */
+@media (prefers-reduced-motion: reduce) {
+  .product-card,
+  .button,
+  .site-nav__link {
+    transition: none;
+  }
+}
+
+/* =========================================
+   ДОПОЛНИТЕЛЬНЫЙ ДЕКОР — ПЛАВАЮЩИЕ КОНФЕТЫ
+   Только на главной странице
+   ========================================= */
+
+/* Создаём отдельный слой для декоративных элементов. */
+.floating-candies {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Основной контент располагается поверх декора. */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* На больших экранах показываем конфеты. */
+@media (min-width: 1024px) {
+  .floating-candies {
+    display: block;
+  }
+}
+
+/* Форма конфеты: центральная часть со светлыми полосами. */
+.floating-candy {
+  position: absolute;
+  display: block;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+
+  border: 1px solid rgba(230, 210, 245, 0.22);
+
+  background:
+          radial-gradient(
+                  circle at 30% 30%,
+                  rgba(255, 255, 255, 0.28),
+                  transparent 38%
+          ),
+          repeating-linear-gradient(
+                  135deg,
+                  rgba(255, 255, 255, 0.18) 0 8px,
+                  rgba(211, 183, 237, 0.10) 8px 16px
+          ),
+          linear-gradient(
+                  135deg,
+                  rgba(205, 177, 227, 0.22),
+                  rgba(157, 128, 181, 0.12)
+          );
+
+  box-shadow:
+          0 10px 28px rgba(17, 11, 24, 0.14),
+          inset 0 1px rgba(255, 255, 255, 0.14);
+
+  opacity: 0.75;
+  animation: candyFloat 8s ease-in-out infinite;
+}
+
+/* Боковые части конфетной обёртки. */
+.floating-candy::before,
+.floating-candy::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+
+  background: linear-gradient(
+          135deg,
+          rgba(215, 190, 234, 0.20),
+          rgba(165, 137, 187, 0.10)
+  );
+
+  border: 1px solid rgba(230, 210, 245, 0.18);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.floating-candy::before {
+  left: -9px;
+}
+
+.floating-candy::after {
+  right: -9px;
+}
+
+/* Размещаем три конфеты слева. */
+.floating-candy--1 {
+  left: 22px;
+  top: 145px;
+  width: 54px;
+  height: 54px;
+}
+
+.floating-candy--2 {
+  left: 38px;
+  top: 43%;
+  width: 70px;
+  height: 70px;
+  opacity: 0.58;
+  animation-delay: 1.3s;
+}
+
+.floating-candy--3 {
+  left: 18px;
+  bottom: 110px;
+  width: 48px;
+  height: 48px;
+  opacity: 0.50;
+  animation-delay: 2.4s;
+}
+
+/* Размещаем три конфеты справа. */
+.floating-candy--4 {
+  right: 24px;
+  top: 170px;
+  width: 62px;
+  height: 62px;
+  animation-delay: 0.9s;
+}
+
+.floating-candy--5 {
+  right: 40px;
+  top: 52%;
+  width: 50px;
+  height: 50px;
+  opacity: 0.56;
+  animation-delay: 1.8s;
+}
+
+.floating-candy--6 {
+  right: 18px;
+  bottom: 135px;
+  width: 74px;
+  height: 74px;
+  opacity: 0.46;
+  animation-delay: 3s;
+}
+
+/* Медленное покачивание вверх и в стороны. */
+@keyframes candyFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(-6deg);
+  }
+
+  25% {
+    transform: translate(6px, -10px) rotate(-2deg);
+  }
+
+  50% {
+    transform: translate(10px, -18px) rotate(5deg);
+  }
+
+  75% {
+    transform: translate(4px, -8px) rotate(1deg);
+  }
+}
+
+/* На небольших ноутбуках декор менее заметный. */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .floating-candy--1,
+  .floating-candy--4 {
+    opacity: 0.40;
+  }
+
+  .floating-candy--2,
+  .floating-candy--6 {
+    opacity: 0.30;
+  }
+}
+
+/* При настройке уменьшения движения отключаем анимацию. */
+@media (prefers-reduced-motion: reduce) {
+  .floating-candy {
+    animation: none;
+  }
+}
+
+/* =========================================
+   ИСПРАВЛЕНИЕ ПОЛОЖЕНИЯ ПОДВАЛА
+   ========================================= */
+
+/* Flexbox прижимает подвал к низу коротких страниц,
+   но не накладывает его поверх содержимого. */
+html {
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* Подвал остаётся после основного содержимого. */
+.site-footer {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: auto;
+  padding: 28px 24px;
+
+  border-top: 1px solid rgba(211, 183, 237, 0.22);
+  background: rgba(24, 20, 31, 0.92);
+  color: #d9c9e5;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.site-footer__text {
+  margin: 0 0 6px;
+}
+
+.site-footer__text:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 639px) {
+  .site-footer {
+    padding: 22px 18px;
+    font-size: 13px;
+    text-align: center;
+  }
+}
+
+
+/* =========================================
+   ДОПОЛНИТЕЛЬНЫЕ ПЛАВАЮЩИЕ КОНФЕТЫ
+   Декор главной страницы
+   ========================================= */
+
+/* Все украшения остаются за содержимым сайта
+   и не мешают нажимать на кнопки и ссылки. */
+.floating-candies {
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Основное содержимое находится выше декора.
+   Через полупрозрачные панели конфеты могут
+   слегка просвечивать. */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Новые конфеты менее яркие, чем боковые.
+   Они двигаются медленнее и не отвлекают от текста. */
+.floating-candy--7,
+.floating-candy--8,
+.floating-candy--9,
+.floating-candy--10,
+.floating-candy--11,
+.floating-candy--12 {
+  opacity: 0.28;
+  filter: saturate(0.7);
+  animation-duration: 12s;
+}
+
+/* Конфета слева, ближе к верхней части hero. */
+.floating-candy--7 {
+  left: 14%;
+  top: 20%;
+
+  width: 64px;
+  height: 64px;
+
+  animation-delay: -2s;
+}
+
+/* Конфета слева, за центральными блоками. */
+.floating-candy--8 {
+  left: 27%;
+  top: 58%;
+
+  width: 46px;
+  height: 46px;
+
+  opacity: 0.23;
+  animation-duration: 15s;
+  animation-delay: -5s;
+}
+
+/* Конфета почти в центре, ниже основного блока. */
+.floating-candy--9 {
+  left: 39%;
+  bottom: 11%;
+
+  width: 58px;
+  height: 58px;
+
+  opacity: 0.18;
+  animation-duration: 14s;
+  animation-delay: -7s;
+}
+
+/* Конфета справа, за hero-блоком. */
+.floating-candy--10 {
+  right: 15%;
+  top: 26%;
+
+  width: 72px;
+  height: 72px;
+
+  opacity: 0.26;
+  animation-duration: 13s;
+  animation-delay: -4s;
+}
+
+/* Конфета справа, за карточками товаров. */
+.floating-candy--11 {
+  right: 28%;
+  top: 62%;
+
+  width: 52px;
+  height: 52px;
+
+  opacity: 0.22;
+  animation-duration: 16s;
+  animation-delay: -9s;
+}
+
+/* Небольшая конфета ближе к центру экрана. */
+.floating-candy--12 {
+  right: 40%;
+  bottom: 16%;
+
+  width: 40px;
+  height: 40px;
+
+  opacity: 0.16;
+  animation-duration: 11s;
+  animation-delay: -6s;
+}
+
+/* На небольших ноутбуках оставляем меньше
+   центральных украшений, чтобы не перегружать сайт. */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .floating-candy--9,
+  .floating-candy--12 {
+    display: none;
+  }
+}
+
+/* Учитываем настройки доступности:
+   если пользователь предпочитает меньше движения,
+   все конфеты остаются неподвижными. */
+@media (prefers-reduced-motion: reduce) {
+  .floating-candy {
+    animation: none;
+  }
 }
