@@ -17,6 +17,8 @@ const orderForm = document.getElementById('order-form');
 const successMessage = document.getElementById('success-message');
 
 
+let lastOrderTrigger = null;
+
 // Проверяем, что элементы модального окна есть на странице.
 if (
     orderDialog &&
@@ -32,6 +34,8 @@ if (
         // Реагируем на нажатие кнопки.
         button.addEventListener('click', () => {
 
+            lastOrderTrigger = button;
+
             // Получаем название товара из data-product.
             const productName = button.dataset.product;
 
@@ -46,6 +50,13 @@ if (
         });
     });
 
+
+    // После закрытия (кнопкой, Escape или фоном) возвращаем фокус к кнопке заказа.
+    orderDialog.addEventListener('close', () => {
+        if (lastOrderTrigger && lastOrderTrigger.isConnected) {
+            lastOrderTrigger.focus();
+        }
+    });
 
     // Закрываем модальное окно по кнопке «Закрыть».
     closeDialogButton.addEventListener('click', () => {
