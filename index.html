@@ -1,286 +1,141 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-    <!-- ---------------------- -->
-    <!-- Основные настройки страницы -->
-
     <meta charset="UTF-8">
-
-    <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AEGIS COSPLAY — магазин косплей-костюмов</title>
+    <meta name="description" content="AEGIS COSPLAY — учебный интернет-магазин косплей-костюмов и аксессуаров.">
 
-    <meta
-            name="description"
-            content="AEGIS COSPLAY — учебный интернет-магазин косплей-костюмов и аксессуаров."
-    >
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/main.js" defer></script>
 
-    <!-- Подключение стилей -->
-    <link rel="stylesheet" href="../kr1-html-css-shop-main/kr1-html-css-shop-main/css/style.css">
-
-    <!-- Подключение JavaScript -->
-    <script src="../kr1-html-css-shop-main/kr1-html-css-shop-main/js/main.js" defer></script>
-
-    <!-- Данные для отображения ссылки -->
     <meta property="og:type" content="website">
-
-    <meta
-            property="og:title"
-            content="AEGIS COSPLAY"
-    >
-
-    <meta
-            property="og:description"
-            content="Косплей-костюмы и аксессуары для фестивалей, фотосессий и ярких образов."
-    >
-
-    <meta
-            property="og:image"
-            content="images/athena.jpg"
-    >
+    <meta property="og:title" content="AEGIS COSPLAY">
+    <meta property="og:description" content="Косплей-костюмы и аксессуары для фестивалей, фотосессий и ярких образов.">
+    <meta property="og:image" content="images/athena.jpg">
 </head>
-
-
 <body>
 
-
-<!-- ---------------------- -->
-<!-- Шапка сайта -->
-
 <header class="site-header">
-
     <div class="site-header__inner">
-
-        <!-- Логотип -->
-        <a
-                class="site-header__logo"
-                href="index.html"
-        >
+        <a class="site-header__logo" href="index.html">
             AEGIS COSPLAY
         </a>
 
-
-        <!-- Основное меню -->
-        <nav
-                class="site-nav"
-                aria-label="Основная навигация"
-        >
-
+        <nav class="site-nav" aria-label="Основная навигация">
             <ul class="site-nav__list">
-
                 <li class="site-nav__item">
-
-                    <a
-                            class="site-nav__link site-nav__link--active"
-                            href="index.html"
-                    >
+                    <a class="site-nav__link site-nav__link--active" href="index.html">
                         Главная
                     </a>
-
                 </li>
-
                 <li class="site-nav__item">
-
-                    <!-- Якорная ссылка ведёт к преимуществам -->
-                    <a
-                            class="site-nav__link"
-                            href="#advantages"
-                    >
+                    <a class="site-nav__link" href="#advantages">
                         Преимущества
                     </a>
-
                 </li>
-
-
                 <li class="site-nav__item">
-
-                    <!-- Якорная ссылка ведёт к блоку популярных товаров -->
-                    <a 
-                            class="site-nav__link"
-                            href="#popular"
-                    >
+                    <a class="site-nav__link" href="#popular">
                         Популярные товары
                     </a>
-
                 </li>
-
-
                 <li class="site-nav__item">
-
-                    <a
-                            class="site-nav__link"
-                            href="../kr1-html-css-shop-main/kr1-html-css-shop-main/catalog.html"
-                    >
+                    <a class="site-nav__link" href="catalog.html">
                         Каталог
                     </a>
-
                 </li>
-
-
                 <li class="site-nav__item">
-
-                    <a
-                            class="site-nav__link"
-                            href="../kr1-html-css-shop-main/kr1-html-css-shop-main/contacts.html"
-                    >
+                    <a class="site-nav__link" href="contacts.html">
                         Контакты
                     </a>
-
                 </li>
-
             </ul>
-
         </nav>
-
     </div>
-
 </header>
 
-
-<!-- ---------------------- -->
-<!-- Основная часть страницы -->
-
 <main>
-
-
-    <!-- ---------------------- -->
-    <!-- Главный экран -->
-
     <section class="hero">
-
         <div class="hero__content">
-
-            <h1 class="hero__title">
-                Создай образ своего героя
-            </h1>
-
+            <h1 class="hero__title">Создай образ своего героя</h1>
             <p class="hero__text">
                 Косплей-костюмы и аксессуары для фестивалей,
                 фотосессий и ярких перевоплощений.
             </p>
-
-            <!-- Якорная ссылка ведёт к популярным товарам -->
-            <a
-                    class="button button--primary hero__button"
-                    href="#popular"
-            >
+            <a class="button button--primary hero__button" href="#popular">
                 Смотреть костюмы
             </a>
-
         </div>
 
         <div class="hero__image-wrapper">
-
-            <img
-                    class="hero__image"
-                    src="../kr1-html-css-shop-main/kr1-html-css-shop-main/images/dark-huntress.jpg"
-                    alt="Косплей-образ героя"
-            >
-
-        </div>
-
-    </section>
-
-
-    <!-- ---------------------- -->
-    <!-- Преимущества магазина -->
-
-    <section
-            class="section"
-            id="advantages"
-    >
-
-        <h2 class="section__title">
-            Почему выбирают AEGIS COSPLAY
-        </h2>
-
-        <ul class="advantages-list">
-
-            <li>
-                детализированные косплей-костюмы;
-            </li>
-
-            <li>
-                разные размеры и варианты образов;
-            </li>
-
-            <li>
-                аксессуары для завершения образа;
-            </li>
-
-            <li>
-                костюмы для фестивалей и фотосессий.
-            </li>
-
-        </ul>
-
-    </section>
-
-
-    <!-- ---------------------- -->
-    <!-- Популярные костюмы -->
-
-    <section
-            class="section"
-            id="popular"
-    >
-
-        <h2 class="section__title">
-            Популярные костюмы
-        </h2>
-
-
-        <!-- Сетка с карточками товаров -->
-        <div class="products-grid">
-
-
-            <!-- ---------------------- -->
-            <!-- Карточка Афины -->
-
-            <article class="product-card product-card--featured">
-
-                <!-- Значок ХИТ расположен поверх карточки -->
-                <span class="product-card__badge">
-                    ХИТ
-                </span>
-
-
-                <!-- Фото ведёт на подробную страницу товара -->
-                <a
-                        class="product-card__image-link"
-                        href="../kr1-html-css-shop-main/kr1-html-css-shop-main/product.html"
+            <picture>
+                <source
+                        media="(min-width: 1200px)"
+                        srcset="images/hero-desktop.jpg"
                 >
+                <source
+                        media="(min-width: 768px)"
+                        srcset="images/hero-tablet.jpg"
+                >
+                <img
+                        class="hero__image"
+                        src="images/hero-mobile.jpg"
+                        alt="Кот в фиолетовом костюме волшебника"
+                        width="320"
+                        height="320"
+                >
+            </picture>
+        </div>
+    </section>
 
+    <section class="section" id="advantages">
+        <h2 class="section__title">Почему выбирают AEGIS COSPLAY</h2>
+        <ul class="advantages-list">
+            <li>детализированные косплей-костюмы;</li>
+            <li>разные размеры и варианты образов;</li>
+            <li>аксессуары для завершения образа;</li>
+            <li>костюмы для фестивалей и фотосессий.</li>
+        </ul>
+    </section>
+
+    <section class="section" id="popular">
+        <h2 class="section__title">Популярные костюмы</h2>
+
+        <div class="products-grid">
+            <article class="product-card product-card--featured">
+                <span class="product-card__badge">ХИТ</span>
+
+                <a class="product-card__image-link" href="product.html">
                     <img
                             class="product-card__image"
-                            src="../kr1-html-css-shop-main/kr1-html-css-shop-main/images/athena.jpg"
+                            src="images/athena-640.jpg"
+                            srcset="
+        images/athena-480.jpg 480w,
+        images/athena-640.jpg 640w,
+        images/athena-960.jpg 960w
+    "
+                            sizes="
+        (min-width: 1280px) 263px,
+        (min-width: 1132px) 355px,
+        (min-width: 1024px) calc((100vw - 64px) / 3),
+        (min-width: 640px) calc((100vw - 48px) / 2),
+        calc(100vw - 32px)
+    "
                             alt="Косплей-костюм Афины"
+                            width="640"
+                            height="853"
+                            loading="lazy"
                     >
-
                 </a>
 
-
-                <h3 class="product-card__title">
-                    Костюм Афины
-                </h3>
-
-
+                <h3 class="product-card__title">Костюм Афины</h3>
                 <p class="product-card__description">
                     Образ богини мудрости в античном стиле
                     с декоративной бронёй и золотыми элементами.
                 </p>
+                <p class="product-card__price">Цена: 12 900 руб.</p>
 
-
-                <p class="product-card__price">
-                    Цена: 12 900 руб.
-                </p>
-
-
-                <!-- data-product хранит название выбранного товара -->
                 <button
                         class="button button--primary product-card__button"
                         type="button"
@@ -288,44 +143,23 @@
                 >
                     Заказать
                 </button>
-
             </article>
 
-
-            <!-- ---------------------- -->
-            <!-- Лунная волшебница -->
-
             <article class="product-card">
-
-                <a
-                        class="product-card__image-link"
-                        href="#"
-                >
-
+                <a class="product-card__image-link" href="#">
                     <img
                             class="product-card__image product-card__image--moon"
-                            src="../kr1-html-css-shop-main/kr1-html-css-shop-main/images/moon-sorceress.jpg"
+                            src="images/moon-sorceress.jpg"
                             alt="Косплей-костюм Лунной волшебницы"
                     >
-
                 </a>
 
-
-                <h3 class="product-card__title">
-                    Лунная волшебница
-                </h3>
-
-
+                <h3 class="product-card__title">Лунная волшебница</h3>
                 <p class="product-card__description">
                     Фэнтезийный костюм в светлых оттенках
                     с декоративными элементами и аксессуарами.
                 </p>
-
-
-                <p class="product-card__price">
-                    Цена: 9 500 руб.
-                </p>
-
+                <p class="product-card__price">Цена: 9 500 руб.</p>
 
                 <button
                         class="button button--primary product-card__button"
@@ -334,44 +168,23 @@
                 >
                     Заказать
                 </button>
-
             </article>
 
-
-            <!-- ---------------------- -->
-            <!-- Тёмная охотница -->
-
             <article class="product-card">
-
-                <a
-                        class="product-card__image-link"
-                        href="#"
-                >
-
+                <a class="product-card__image-link" href="#">
                     <img
                             class="product-card__image"
-                            src="../kr1-html-css-shop-main/kr1-html-css-shop-main/images/dark-huntress.jpg"
+                            src="images/dark-huntress.jpg"
                             alt="Косплей-костюм Тёмной охотницы"
                     >
-
                 </a>
 
-
-                <h3 class="product-card__title">
-                    Тёмная охотница
-                </h3>
-
-
+                <h3 class="product-card__title">Тёмная охотница</h3>
                 <p class="product-card__description">
                     Детализированный образ в тёмном фэнтезийном стиле
                     для фестивалей и тематических фотосессий.
                 </p>
-
-
-                <p class="product-card__price">
-                    Цена: 11 400 руб.
-                </p>
-
+                <p class="product-card__price">Цена: 11 400 руб.</p>
 
                 <button
                         class="button button--primary product-card__button"
@@ -380,80 +193,40 @@
                 >
                     Заказать
                 </button>
-
             </article>
-
         </div>
-
     </section>
 
-
-    <!-- ---------------------- -->
-    <!-- Дополнительная информация -->
-
     <aside class="aside-info">
-
-        <h2>
-            Найди свой идеальный образ
-        </h2>
-
+        <h2>Найди свой идеальный образ</h2>
         <p>
-            В каталоге AEGIS COSPLAY представлены костюмы
-            в разных стилях: фэнтези, мифология, игры
-            и оригинальные авторские образы.
+            В каталоге AEGIS COSPLAY представлены костюмы в разных стилях:
+            фэнтези, мифология, игры и оригинальные авторские образы.
         </p>
-
-        <a
-                class="button button--secondary"
-                href="../kr1-html-css-shop-main/kr1-html-css-shop-main/catalog.html"
-        >
+        <a class="button button--secondary" href="catalog.html">
             Перейти в каталог
         </a>
-
     </aside>
-
 </main>
 
-
-<!-- ---------------------- -->
-<!-- Подвал -->
-
-<footer
-        class="site-footer"
-        id="contacts"
-
->
-
+<footer class="site-footer" id="contacts">
     <p class="site-footer__text">
         &copy; 2026 AEGIS COSPLAY. Все права защищены.
     </p>
-
     <p class="site-footer__text">
-        Учебный проект по дисциплине
-        «Фронтенд и бэкенд разработка»
+        Учебный проект по дисциплине «Фронтенд и бэкенд разработка»
     </p>
-
 </footer>
-
-
-<!-- ---------------------- -->
-<!-- Модальное окно заказа -->
 
 <dialog
         class="order-dialog"
         id="order-dialog"
         aria-labelledby="order-dialog-title"
 >
-
-    <h2
-            class="order-dialog__title"
-            id="order-dialog-title"
-    >
+    <h2 class="order-dialog__title" id="order-dialog-title">
         Оформление заказа
     </h2>
 
-
-    <!-- Форма заказа -->
     <form
             class="order-form"
             id="order-form"
@@ -461,9 +234,6 @@
             method="post"
             novalidate
     >
-
-
-        <!-- Скрытое поле хранит выбранный товар -->
         <input
                 class="order-form__hidden"
                 id="selected-product"
@@ -471,19 +241,8 @@
                 type="hidden"
         >
 
-
-        <!-- ---------------------- -->
-        <!-- Имя -->
-
         <div class="order-form__field">
-
-            <label
-                    class="order-form__label"
-                    for="order-name"
-            >
-                Имя
-            </label>
-
+            <label class="order-form__label" for="order-name">Имя</label>
             <input
                     class="order-form__input"
                     id="order-name"
@@ -494,22 +253,10 @@
                     autocomplete="given-name"
                     required
             >
-
         </div>
 
-
-        <!-- ---------------------- -->
-        <!-- Электронная почта -->
-
         <div class="order-form__field">
-
-            <label
-                    class="order-form__label"
-                    for="order-email"
-            >
-                E-mail
-            </label>
-
+            <label class="order-form__label" for="order-email">E-mail</label>
             <input
                     class="order-form__input"
                     id="order-email"
@@ -519,22 +266,10 @@
                     autocomplete="email"
                     required
             >
-
         </div>
 
-
-        <!-- ---------------------- -->
-        <!-- Телефон -->
-
         <div class="order-form__field">
-
-            <label
-                    class="order-form__label"
-                    for="order-phone"
-            >
-                Телефон
-            </label>
-
+            <label class="order-form__label" for="order-phone">Телефон</label>
             <input
                     class="order-form__input"
                     id="order-phone"
@@ -545,88 +280,38 @@
                     pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
                     required
             >
-
             <small class="order-form__hint">
                 Формат: +7 (900) 000-00-00
             </small>
-
         </div>
 
-
-        <!-- ---------------------- -->
-        <!-- Дата связи -->
-
         <div class="order-form__field">
-
-            <label
-                    class="order-form__label"
-                    for="order-date"
-            >
-                Дата связи
-            </label>
-
+            <label class="order-form__label" for="order-date">Дата связи</label>
             <input
                     class="order-form__input"
                     id="order-date"
                     name="date"
                     type="date"
             >
-
         </div>
 
-
-        <!-- ---------------------- -->
-        <!-- Тема заявки -->
-
         <div class="order-form__field">
-
-            <label
-                    class="order-form__label"
-                    for="order-topic"
-            >
-                Тема заявки
-            </label>
-
+            <label class="order-form__label" for="order-topic">Тема заявки</label>
             <select
                     class="order-form__select"
                     id="order-topic"
                     name="topic"
                     required
             >
-
-                <option value="">
-                    Выберите тему
-                </option>
-
-                <option value="product">
-                    Заказ костюма
-                </option>
-
-                <option value="consultation">
-                    Консультация
-                </option>
-
-                <option value="delivery">
-                    Доставка
-                </option>
-
+                <option value="">Выберите тему</option>
+                <option value="product">Заказ костюма</option>
+                <option value="consultation">Консультация</option>
+                <option value="delivery">Доставка</option>
             </select>
-
         </div>
 
-
-        <!-- ---------------------- -->
-        <!-- Комментарий -->
-
         <div class="order-form__field">
-
-            <label
-                    class="order-form__label"
-                    for="order-comment"
-            >
-                Комментарий
-            </label>
-
+            <label class="order-form__label" for="order-comment">Комментарий</label>
             <textarea
                     class="order-form__textarea"
                     id="order-comment"
@@ -634,19 +319,10 @@
                     rows="4"
                     placeholder="Укажите размер костюма или дополнительную информацию"
             ></textarea>
-
         </div>
 
-
-        <!-- ---------------------- -->
-        <!-- Согласие на обработку данных -->
-
         <div class="order-form__field order-form__field--checkbox">
-
-            <label
-                    class="order-form__label order-form__label--checkbox"
-            >
-
+            <label class="order-form__label order-form__label--checkbox">
                 <input
                         class="order-form__input order-form__input--checkbox"
                         id="order-agreement"
@@ -654,19 +330,11 @@
                         type="checkbox"
                         required
                 >
-
                 Я согласен на обработку данных
-
             </label>
-
         </div>
 
-
-        <!-- ---------------------- -->
-        <!-- Кнопки формы -->
-
         <div class="order-form__actions">
-
             <button
                     class="button button--secondary"
                     type="button"
@@ -674,32 +342,16 @@
             >
                 Закрыть
             </button>
-
-
-            <button
-                    class="button button--primary"
-                    type="submit"
-            >
+            <button class="button button--primary" type="submit">
                 Отправить заказ
             </button>
-
         </div>
-
     </form>
 
-
-    <!-- Сообщение появляется после успешной отправки -->
-    <p
-            class="success-message"
-            id="success-message"
-            hidden
-    >
+    <p class="success-message" id="success-message" hidden>
         Заказ успешно оформлен!
     </p>
-
 </dialog>
 
-
 </body>
-
 </html>
