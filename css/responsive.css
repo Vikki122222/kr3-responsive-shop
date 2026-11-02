@@ -1,0 +1,407 @@
+/*
+  Адаптивные стили для контрольной работы №3.
+  Подход: Mobile First.
+  Базовые стили рассчитаны на мобильный экран.
+  Расширения добавляются через min-width медиазапросы.
+*/
+
+/* Базовые правила */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Контейнеры */
+
+main {
+    padding: 24px 16px;
+}
+
+.section,
+.hero,
+.catalog-layout,
+.product,
+.breadcrumbs,
+.aside-info {
+    width: 100%;
+    max-width: var(--container-width);
+    margin-inline: auto;
+}
+
+.section {
+    padding-block: 24px;
+}
+
+/* Шапка и навигация */
+
+.site-header {
+    position: static;
+}
+
+.site-header__inner {
+    padding: 16px;
+}
+
+.site-nav__list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-sm);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-nav__link {
+    display: block;
+    padding: 12px 16px;
+}
+
+#advantages,
+#popular {
+    scroll-margin-top: 16px;
+}
+
+/* Главный экран */
+
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-lg);
+    padding: 24px 16px;
+}
+
+.hero__content {
+    display: grid;
+    gap: var(--space-lg);
+    min-width: 0;
+}
+
+.hero__title {
+    font-size: clamp(32px, 5vw, 56px);
+    line-height: 1.1;
+}
+
+.hero__button {
+    justify-self: start;
+}
+
+.hero__image-wrapper {
+    width: 100%;
+    max-width: 520px;
+    min-width: 0;
+    margin-inline: auto;
+}
+
+.hero__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 520px;
+    margin-inline: auto;
+}
+
+/* Сетка карточек */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-md);
+}
+
+.product-card {
+    min-width: 0;
+}
+
+.product-card__title,
+.product-card__description {
+    overflow-wrap: anywhere;
+}
+
+/* Каталог */
+
+.catalog-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+        "filters"
+        "products";
+    gap: var(--space-lg);
+}
+
+.catalog-filters {
+    position: static;
+    min-width: 0;
+    order: -1;
+}
+
+.catalog-layout__products {
+    min-width: 0;
+}
+
+/* Изображения карточек */
+
+.product-card__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius:
+            var(--radius-md)
+            var(--radius-md)
+            0
+            0;
+}
+
+.product-card__image--moon {
+    object-fit: contain;
+}
+
+/* Незакреплённый подвал */
+
+.site-footer {
+    position: static;
+    padding: 16px;
+}
+
+/* Небольшой планшет */
+
+@media (min-width: 640px) {
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Планшет */
+
+@media (min-width: 768px) {
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .site-header__inner {
+        padding: 24px;
+    }
+
+    .site-nav__list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    #advantages,
+    #popular {
+        scroll-margin-top: 160px;
+    }
+
+    .hero {
+        padding: 32px;
+    }
+
+    .site-footer {
+        padding: 24px;
+    }
+}
+
+/* Двухколоночный главный экран */
+
+@media (min-width: 900px) {
+    .hero {
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
+    }
+}
+
+/* Desktop */
+
+@media (min-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .catalog-layout {
+        grid-template-columns: 280px minmax(0, 1fr);
+        grid-template-areas: "filters products";
+        align-items: start;
+    }
+
+    .catalog-filters {
+        position: sticky;
+        top: 160px;
+        order: initial;
+    }
+}
+
+/* Широкий экран */
+
+@media (min-width: 1280px) {
+    .products-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* Уменьшение анимации */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+
+/* Декоративные волшебные палочки по бокам главного блока */
+
+.hero {
+    position: relative;
+}
+
+@media (min-width: 1400px) {
+    .hero::before,
+    .hero::after {
+        content: "";
+        position: absolute;
+        width: 90px;
+        height: 180px;
+        pointer-events: none;
+        opacity: 0.55;
+
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 180'%3E%3Cpath d='M42 69L66 156' fill='none' stroke='%23c1a5df' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M39 25L47 43L67 46L52 60L55 80L37 70L19 79L23 59L9 44L29 42Z' fill='%233e314b' stroke='%23c1a5df' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='M73 12V26M66 19H80M15 101V113M9 107H21' fill='none' stroke='%23d6c1eb' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='15' cy='17' r='2.5' fill='%23c1a5df'/%3E%3Ccircle cx='77' cy='94' r='2' fill='%23c1a5df'/%3E%3C/svg%3E");
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .hero::before {
+        top: 55px;
+        left: -120px;
+        transform: rotate(-18deg);
+    }
+
+    .hero::after {
+        right: -120px;
+        bottom: 45px;
+        transform: rotate(22deg);
+    }
+}
+
+/* Этап 15. Адаптация формы заявки */
+
+.order-page__form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-md);
+    width: 100%;
+    min-width: 0;
+}
+
+.order-page__form .order-form__field {
+    display: grid;
+    align-content: start;
+    gap: var(--space-xs);
+    min-width: 0;
+    margin-bottom: 0;
+}
+
+.order-page__form .order-form__label {
+    margin-bottom: 0;
+}
+
+.order-page__form .order-form__input,
+.order-page__form .order-form__textarea,
+.order-page__form .order-form__select {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+    font: inherit;
+}
+
+.order-page__form .order-form__textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Чекбокс сохраняет свой обычный размер */
+
+.order-page__form .order-form__input--checkbox {
+    width: auto;
+    min-height: auto;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.order-page__form .order-form__actions {
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+    .order-page__form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .order-page__form .order-form__field--wide {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Этап 16. Адаптация таблицы характеристик */
+
+.product__content {
+    min-width: 0;
+}
+
+.product__details {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.product-table {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    text-align: left;
+}
+
+/* Этап 17. Адаптация модального окна */
+
+.order-dialog {
+    width: min(100% - 32px, 560px);
+    max-height: calc(100vh - 32px);
+    overflow: auto;
+}
+
+.order-dialog::backdrop {
+    background: rgb(0 0 0 / 0.5);
+}
